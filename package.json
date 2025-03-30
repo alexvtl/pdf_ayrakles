@@ -4,7 +4,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
-    "puppeteer": "^24.4.0"
+    "puppeteer": "^21.3.8"
   },
   "scripts": {
     "start": "node server.js",
