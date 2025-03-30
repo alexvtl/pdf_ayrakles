@@ -7,8 +7,7 @@
     "puppeteer": "^21.3.8"
   },
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "puppeteer install"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
