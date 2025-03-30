@@ -1,5 +1,5 @@
 {
-    "name": "pdf-api",
+    "name": "pdf_ayrakles",
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
