@@ -8,14 +8,16 @@ app.use(express.json());
 
 // Route POST pour générer le PDF
 app.post('/generate-pdf', async (req, res) => {
+    console.log("📥 Body reçu :", req.body)
     const prestations = req.body.prestations || [];
   
     try {
+        console.log("🚀 Lancement de Puppeteer...");
       const browser = await puppeteer.launch({
         headless: "new", // nécessaire parfois sur Render
         args: ['--no-sandbox', '--disable-setuid-sandbox'] // 🔐 pour Render
       });
-  
+      
       const page = await browser.newPage();
   
       const html = `
@@ -52,7 +54,7 @@ app.post('/generate-pdf', async (req, res) => {
           </body>
         </html>
       `;
-  
+      console.log("📄 HTML généré :", html.slice(0, 200)); 
       await page.setContent(html, { waitUntil: 'networkidle0' });
       const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
       await browser.close();
