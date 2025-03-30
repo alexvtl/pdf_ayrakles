@@ -1,6 +1,5 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
-
 const app = express();
 const PORT = process.env.PORT || 10000;
 
@@ -14,8 +13,9 @@ app.post('/generate-pdf', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: 'new',
+        channel: 'chrome',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
     const page = await browser.newPage();
