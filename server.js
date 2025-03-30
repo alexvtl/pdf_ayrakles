@@ -15,7 +15,8 @@ app.post('/generate-pdf', async (req, res) => {
         console.log("🚀 Lancement de Puppeteer...");
       const browser = await puppeteer.launch({
         headless: "new", // nécessaire parfois sur Render
-        args: ['--no-sandbox', '--disable-setuid-sandbox'] // 🔐 pour Render
+        args: ['--no-sandbox', '--disable-setuid-sandbox'], // 🔐 pour Render,
+        executablePath: puppeteer.executablePath()
       });
       
       const page = await browser.newPage();
