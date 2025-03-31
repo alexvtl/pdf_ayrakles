@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const { executablePath } = require('puppeteer');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
@@ -13,8 +13,8 @@ app.post('/generate-pdf', async (req, res) => {
 
   try {
     const browser = await puppeteer.launch({
-        headless: 'true',
-        channel: 'chrome',
+        headless: 'new',
+        executablePath: executablePath(),
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
