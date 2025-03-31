@@ -4,21 +4,10 @@ set -o errexit
 # Install dependencies
 npm install
 
-# Setup Puppeteer cache
-PUPPETEER_CACHE_DIR=/opt/render/.cache/puppeteer
-mkdir -p $PUPPETEER_CACHE_DIR
+# Affiche version Puppeteer installée dans les logs Render
+echo "🔍 Puppeteer version installée :"
+node -e "console.log(require('puppeteer').version)"
 
-# Download Chrome
-npm install puppeteer@19.11.1
+# Supprime puppeteer-core si installé par erreur
+npm uninstall puppeteer-core || true
 
-# Create target cache directory before copying
-mkdir -p /opt/render/project/src/.cache/puppeteer/chrome/
-
-# Store/pull Puppeteer cache with build cache
-if [[ ! -d $PUPPETEER_CACHE_DIR ]]; then
-  echo "...Copying Puppeteer Cache from Build Cache"
-  cp -R /opt/render/project/src/.cache/puppeteer/chrome/ $PUPPETEER_CACHE_DIR
-else
-  echo "...Storing Puppeteer Cache in Build Cache"
-  cp -R $PUPPETEER_CACHE_DIR /opt/render/project/src/.cache/puppeteer/chrome/
-fi

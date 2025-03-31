@@ -14,14 +14,15 @@ app.post('/generate-pdf', async (req, res) => {
 
   console.log("📥 Body reçu :", req.body);
   console.log("🚀 Lancement de Puppeteer...");
-
+  console.log("🧾 Puppeteer version :", puppeteer.version);
   try {
     const browser = await puppeteer.launch({
         headless: 'new',
         args: ['--no-sandbox', '--disable-setuid-sandbox']
       });
   
-  
+      const browserVersion = await browser.version();
+      console.log("🧾 Chromium utilisé :", browserVersion);
     const page = await browser.newPage();
 
     const html = `
