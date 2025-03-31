@@ -1,5 +1,9 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
+const fs = require('fs');
+
+
+
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -15,6 +19,12 @@ app.post('/generate-pdf', async (req, res) => {
   try {
     const chromePath = await puppeteer.executablePath(); // 👈 récupère le bon chemin dynamiquement
     console.log("✅ Chrome path utilisé :", chromePath);
+    try {
+        const exists = fs.existsSync(chromePath);
+        console.log("✅ Chrome présent :", exists);
+      } catch (e) {
+        console.error("❌ Erreur lors de la vérification de Chrome :", e);
+      }
 
     const browser = await puppeteer.launch({
       headless: 'new',
