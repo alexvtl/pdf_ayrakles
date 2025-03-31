@@ -9,7 +9,7 @@ PUPPETEER_CACHE_DIR=/opt/render/.cache/puppeteer
 mkdir -p $PUPPETEER_CACHE_DIR
 
 # Download Chrome
-npx puppeteer browsers install chrome
+npm install puppeteer@19.11.1
 
 # Create target cache directory before copying
 mkdir -p /opt/render/project/src/.cache/puppeteer/chrome/

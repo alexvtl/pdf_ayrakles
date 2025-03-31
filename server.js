@@ -1,6 +1,5 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
-const fs = require('fs');
 
 
 
@@ -17,21 +16,12 @@ app.post('/generate-pdf', async (req, res) => {
   console.log("🚀 Lancement de Puppeteer...");
 
   try {
-    const chromePath = await puppeteer.executablePath(); // 👈 récupère le bon chemin dynamiquement
-    console.log("✅ Chrome path utilisé :", chromePath);
-    try {
-        const exists = fs.existsSync(chromePath);
-        console.log("✅ Chrome présent :", exists);
-      } catch (e) {
-        console.error("❌ Erreur lors de la vérification de Chrome :", e);
-      }
-
     const browser = await puppeteer.launch({
-      headless: 'new',
-      executablePath: chromePath,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-
+        headless: 'new',
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      });
+  
+  
     const page = await browser.newPage();
 
     const html = `
