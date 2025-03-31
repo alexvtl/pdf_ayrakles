@@ -1,6 +1,6 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
-const { executablePath } = require('puppeteer');
+
 const app = express();
 const PORT = process.env.PORT || 10000;
 
@@ -13,67 +13,62 @@ app.post('/generate-pdf', async (req, res) => {
   console.log("🚀 Lancement de Puppeteer...");
 
   try {
+    const chromePath = await puppeteer.executablePath(); // 👈 récupère le bon chemin dynamiquement
+    console.log("✅ Chrome path utilisé :", chromePath);
+
     const browser = await puppeteer.launch({
-        headless: 'new',
-        executablePath: '/opt/render/.cache/puppeteer/chrome/linux-131.0.6778.204/chrome-linux64/chrome',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      headless: 'new',
+      executablePath: chromePath,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
     const page = await browser.newPage();
 
     const html = `
-      <html>
-        <head>
-          <style>
-            body { font-family: Arial, sans-serif; padding: 40px; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-            thead { background-color: #f0f0f0; }
-            tr { page-break-inside: avoid; }
-          </style>
-        </head>
-        <body>
-          <h1>Liste des prestations</h1>
-          <table>
-            <thead>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 40px; }
+          table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+          th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+          thead { background-color: #f0f0f0; }
+          tr { page-break-inside: avoid; }
+        </style>
+      </head>
+      <body>
+        <h1>Liste des prestations</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Prestation</th>
+              <th>Description</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${prestations.map(p => `
               <tr>
-                <th>Prestation</th>
-                <th>Description</th>
-                <th>Prix</th>
+                <td>${p.nom}</td>
+                <td>${p.description}</td>
+                <td>${p.prix} €</td>
               </tr>
-            </thead>
-            <tbody>
-              ${prestations.map(p => `
-                <tr>
-                  <td>${p.nom}</td>
-                  <td>${p.description}</td>
-                  <td>${p.prix} €</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </body>
-      </html>
-    `;
+            `).join('')}
+          </tbody>
+        </table>
+      </body>
+    </html>
+  `;
 
-    await page.setContent(html, { waitUntil: 'networkidle0' });
-    const pdf = await page.pdf({ format: 'A4', printBackground: true });
+    await page.setContent(html);
+    const pdf = await page.pdf({ format: "A4" });
     await browser.close();
 
-    res.set({
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="prestations.pdf"',
-    });
-
+    res.set({ 'Content-Type': 'application/pdf' });
     res.send(pdf);
   } catch (err) {
-    console.error("Erreur PDF :", err);
-    res.status(500).send("Erreur lors de la génération du PDF");
+    console.error("❌ Erreur PDF :", err);
+    res.status(500).send("Erreur PDF");
   }
-});
-
-app.get('/', (_, res) => {
-  res.send('✅ Serveur PDF prêt à l’emploi !');
 });
 
 app.listen(PORT, () => {
