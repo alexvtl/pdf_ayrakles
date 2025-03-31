@@ -53,7 +53,7 @@ app.post('/generate-pdf', async (req, res) => {
        `;
    
        await page.setContent(html);
-       const pdf = await page.pdf({ format: 'A4', printBackground: true , path: './files/prestations.pdf'});
+       const pdf = await page.pdf({ format: 'A4', printBackground: true});
    res.set({'Content-Type':'application/pdf'});
         //   res.write(pdf);
         //   res.end();
