@@ -27,11 +27,7 @@ app.post("/generate-pdf", async (req, res) => {
   const data = req.body || [];
 
   const table = renderTableaux(data);
-  const imageslogo = getImageBase64(
-    "./front_template_devis/images/images/image7.png",
-    " object-fit: cover;height: 4cm;width=100%;"
-  );
-
+  const imageslogo = `<img style="object-fit: cover;height: 4cm;width=100%;" src="${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_devis/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
