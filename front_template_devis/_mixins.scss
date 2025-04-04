@@ -1,0 +1,98 @@
+@use "variables";
+
+@mixin title {
+  font-family: variables.$title_font;
+  font-size: 44px;
+  margin-left: 1cm;
+  color: variables.$primary_color;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@mixin subtitle {
+  font-family: variables.$title_font;
+  font-size: 20px;
+  margin-left: 1cm;
+  color: variables.$primary_color;
+  font-weight: bold;
+}
+@mixin lot-name($color: variables.$color-white) {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  border: none;
+  background-color: #296b77;
+  color: $color;
+  font-style: italic;
+}
+
+@mixin flex-column($align: flex-start) {
+  display: flex;
+  flex-direction: column;
+  align-items: $align;
+}
+
+@mixin table-base-no-border {
+  border-collapse: collapse;
+  border: none;
+}
+
+@mixin text-bold($color: variables.$color-black) {
+  font-weight: bold;
+  color: $color;
+}
+
+@mixin size($width, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin center-horizontal {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+}
+
+@mixin first_column {
+  border: 0.2px solid black;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0px;
+}
+@mixin first_column_acompte {
+  border: 0.2px solid white;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0px;
+}
+
+@mixin second_column {
+  width: 4cm;
+  margin: 0px;
+  padding: 3px;
+  color: black;
+  border: 0.2px solid black;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+}
+
+@mixin second_column_acompte {
+  width: 3cm;
+  margin: 0px;
+  padding: 3px;
+  color: black;
+  border: 0.2px solid white;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+}
+
+@mixin td-padding($padding: 3px 4px) {
+  padding: $padding;
+  vertical-align: middle;
+  max-width: 8cm;
+}

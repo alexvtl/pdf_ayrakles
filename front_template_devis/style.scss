@@ -1,0 +1,396 @@
+@use "variables";
+@use "mixins" as *;
+
+@page {
+  size: A4;
+  -webkit-print-color-adjust: exact;
+  margin: 4.5cm 0;
+}
+
+body {
+  font-family: variables.$font-family;
+  font-size: variables.$font-size-base;
+  margin: 0;
+  padding: 0;
+  color: variables.$color-text;
+}
+
+.section_header {
+  display: flex;
+  justify-content: space-between;
+  @include center-horizontal;
+  @include size(18cm, 4cm);
+  margin-bottom: 30px;
+
+  &__right {
+    @include flex-column(flex-end);
+
+    p {
+      margin: 0 0 3px 0;
+      font-size: 20px;
+      padding: 0;
+    }
+
+    &__client-name {
+      @include text-bold;
+    }
+
+    &__date {
+      margin-top: 20px !important;
+    }
+  }
+}
+
+.section_info-projet {
+  @include flex-column;
+  @include center-horizontal;
+  width: 16.5cm;
+
+  div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 22px;
+  }
+
+  &__text_1,
+  &__text_2 {
+    font-size: 22px;
+  }
+
+  &__text_2::before {
+    content: "      ";
+    height: 20px;
+    background-color: variables.$color-yellow;
+    width: 100%;
+    margin-top: -1em;
+  }
+}
+
+.logo {
+  height: 60px;
+}
+
+.section_table {
+  @include flex-column;
+  @include center-horizontal;
+  width: 22cm;
+  margin: 0;
+}
+
+.tableau_prestations {
+  width: 100%;
+  @include table-base-no-border;
+
+  &__header {
+    background-color: variables.$color-white;
+    border: none;
+
+    th {
+      text-align: center;
+      color: variables.$color-gray;
+      font-size: 12px;
+      border: none;
+      white-space: nowrap;
+    }
+    &__total {
+      width: 3cm;
+      max-width: 3cm;
+    }
+    &__libelle {
+      border: none;
+    }
+  }
+}
+
+// .td_padding {
+//   padding: 3px 4px;
+//   vertical-align: middle;
+//   max-width: 8cm;
+// }
+
+.section__lot {
+  background-color: variables.$color-green;
+  border: none;
+
+  td {
+    font-size: 22px;
+    color: variables.$color-white;
+    border: none;
+  }
+  &__name {
+    @include td-padding;
+    @include lot-name(variables.$color-white);
+  }
+  &__total {
+    background-color: variables.$color-green;
+    width: 3cm;
+    white-space: nowrap;
+    @include td-padding;
+    text-align: center;
+    @include text-bold(variables.$color-white);
+    border: none;
+  }
+}
+
+.section__piece {
+  td {
+    @include td-padding;
+    font-size: 18px;
+    @include text-bold(variables.$color-white);
+    white-space: nowrap;
+    background-color: variables.$color-yellow;
+    border: none;
+  }
+  &__price {
+    @include td-padding;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.section__prestation {
+  page-break-inside: avoid;
+  margin-bottom: 1px;
+  &__info {
+    @include td-padding;
+    &__name {
+      text-align: left;
+      font-size: 14px;
+      @include text-bold(#666);
+      border: none;
+    }
+    &__description {
+      font-size: 9px;
+      text-align: left;
+      color: #afafaf;
+      border: none;
+      width: 8cm;
+    }
+  }
+
+  &__price {
+    @include td-padding;
+    font-size: 14px;
+    text-align: center;
+    @include text-bold(variables.$color-black);
+  }
+  &__price_uht,
+  &__quantity,
+  &__unit,
+  &__remise {
+    @include td-padding;
+    text-align: center;
+    font-size: 14px;
+    @include text-bold(#666);
+    white-space: nowrap;
+    border: none;
+  }
+}
+
+.section_info-projet {
+  &__text_1 {
+    @include text-bold;
+  }
+  &__text_2 {
+    @include text-bold;
+  }
+  &__bien_lieu {
+    font-size: 22px;
+  }
+  &__type_projet {
+    font-size: 22px;
+  }
+}
+
+.table_totaux {
+  @include flex-column(flex-end);
+  width: 100%;
+  margin: 40px 0;
+  tr {
+    display: flex;
+    justify-content: flex-end;
+    border: none;
+  }
+  &__hors_option {
+    margin: 0px 0px 10px 0px;
+    display: table;
+    page-break-inside: avoid;
+    width: fit-content;
+    border: none;
+    align-self: flex-end;
+    border-collapse: collapse;
+    padding: 0px;
+    transform: translateX(3cm);
+    td {
+      margin: 0;
+      border: 0.1px solid variables.$color-black;
+    }
+    &__total_ht {
+      width: auto;
+    }
+    &__tva {
+      width: auto;
+    }
+    &__total_ttc {
+      width: auto;
+    }
+  }
+  &__option {
+    margin: 0px 0px 10px 0px;
+    display: table;
+    page-break-inside: avoid;
+    width: fit-content;
+    align-self: flex-end;
+    border-collapse: collapse;
+    padding: 0px;
+    border: none;
+    transform: translateX(3cm);
+    td {
+      margin: 0;
+      border: 0.2px solid variables.$color-black;
+    }
+    &__total_ht {
+      width: auto;
+    }
+    &__tva {
+      width: auto;
+    }
+    &__total_ttc {
+      width: auto;
+    }
+  }
+}
+
+.table_date {
+  display: table;
+  border-collapse: collapse;
+  width: fit-content;
+  page-break-inside: avoid;
+  border: none;
+  align-self: flex-end;
+  margin: 0 0 10px 0;
+  transform: translateX(3cm);
+  &__date_demarrage {
+    td {
+      margin: 0;
+      border: 0.2px solid variables.$color-black;
+    }
+  }
+  &__date_duree {
+    td {
+      margin: 0;
+      border: 0.2px solid variables.$color-black;
+    }
+  }
+}
+
+.green {
+  background-color: variables.$color-green;
+  font-size: 14px;
+  @include text-bold(variables.$color-white);
+  text-align: left;
+}
+
+.yellow {
+  background-color: variables.$color-yellow !important;
+  color: variables.$color-white !important;
+}
+
+.first_column {
+  //   border: 0.2px solid variables.$color-black;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0;
+}
+
+.first_column_acompte {
+  border: none;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0;
+}
+
+.second_column {
+  width: 4cm;
+  margin: 0;
+  padding: 3px;
+  color: variables.$color-black;
+  @include text-bold;
+  font-size: 14px;
+  text-align: right;
+}
+
+.second_column_acompte {
+  margin: 0;
+  padding: 3px;
+  color: variables.$color-black;
+  @include text-bold;
+  font-size: 14px;
+  text-align: right;
+  width: 3cm;
+  border: none;
+}
+
+.section__acompte {
+  min-width: 100%;
+  position: relative;
+  border: none;
+  page-break-inside: avoid;
+  margin-bottom: 20px;
+  &__title {
+    @include text-bold;
+    text-decoration: underline;
+    margin: 30px 0 0 80px;
+    font-size: 14px;
+    align-self: flex-start;
+  }
+}
+
+.table_acompte {
+  align-self: flex-start;
+  position: relative;
+  min-width: 100%;
+  thead {
+    width: 100%;
+  }
+  td {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  &__acompte_tr {
+    width: 100%;
+    &__text {
+      font-size: 14px;
+      @include first_column_acompte;
+      text-align: left;
+    }
+    &__tva {
+      color: rgb(160, 160, 160);
+      @include text-bold;
+      font-size: 14px;
+      text-align: center;
+      border: none;
+    }
+    &__montant {
+      white-space: nowrap;
+      width: 4cm;
+      font-size: 14px;
+      border: none;
+      text-align: right;
+    }
+  }
+}
+
+.text_end {
+  @include center-horizontal;
+  @include size(18cm, auto);
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-size: 15px;
+  page-break-inside: avoid;
+  font-style: italic;
+}

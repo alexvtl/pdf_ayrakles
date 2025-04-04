@@ -1,0 +1,368 @@
+@page {
+  size: A4;
+  -webkit-print-color-adjust: exact;
+  margin: 4.5cm 0cm;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.imagecorner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 1cm;
+  transform: translateY(-20px);
+}
+.section_header {
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18cm;
+  height: 4cm;
+  right: 50%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.header__right {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+.header__right p {
+  margin: 0 0 3px 0;
+  font-size: 20px;
+  padding: 0px;
+}
+.header__right__client-name {
+  font-weight: bold;
+}
+.header__right__date {
+  margin-top: 20px !important;
+}
+.section_info-projet {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 16.5cm;
+}
+.section_info-projet div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 22px;
+}
+.section_info-projet__text_1 {
+  font-size: 22px;
+}
+.section_info-projet__text_2 {
+  font-size: 22px;
+}
+.section_info-projet__text_2::before {
+  content: "      ";
+  height: 20px;
+  background-color: #eccc8c;
+  width: 100%;
+  margin-top: -1em;
+}
+.logo {
+  height: 60px;
+}
+.tableau_prestations__header__libelle {
+  border: 1px black;
+}
+.section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute;
+        left:0.5cm;  */
+  width: 22cm;
+  margin: 0cm 0cm 0cm 0cm;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+}
+.tableau_prestations {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+  border: none;
+}
+
+.td_padding {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+}
+.tableau_prestations__header {
+  background-color: white;
+  border: none;
+  height: min-content;
+}
+.tableau_prestations__header th {
+  text-align: center;
+  color: #afafaf;
+  font-size: 12px;
+  border: none;
+  white-space: nowrap;
+}
+
+.bold {
+  font-weight: bold;
+  color: black;
+}
+.section__lot {
+  background-color: #f2f2f2;
+  border: none;
+}
+.section__lot td {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.section__lot__name {
+  background-color: #296b77;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-style: italic;
+}
+.tableau_prestations__header__total {
+  max-width: 3cm;
+  width: 3cm;
+}
+
+.section__lot__total {
+  background-color: #296b77;
+  width: 3cm;
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.section__piece td {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+  background-color: #eccc8c;
+  border: none;
+}
+.section__piece__price {
+  text-align: center;
+  font-size: 18px;
+}
+.section__prestation {
+  page-break-inside: avoid;
+  margin-bottom: 1px;
+}
+.section__prestation td {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  border: 1px black;
+}
+
+.section__prestation__price {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: black !important;
+}
+.section__prestation__price_uht {
+  text-align: center;
+  font-size: 14px;
+}
+
+.section__prestation__quantity {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #666;
+  border: none;
+}
+
+.section__prestation__unit {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  border: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.section__prestation__remise {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.section__prprestation__nom {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  color: #666;
+  border: none;
+  margin-bottom: 1px;
+}
+.section__prestation__desc {
+  font-size: 9px;
+  text-align: left;
+  color: #afafaf;
+  border: none;
+  width: 8cm;
+}
+
+.bien_lieu {
+  font-size: 22px;
+}
+
+.type_projet {
+  font-size: 22px;
+}
+
+.table_totaux {
+  display: flex;
+  padding: 0px;
+  flex-direction: column;
+  align-items: end !important;
+  width: 100%;
+  margin: 40px 0px;
+}
+
+.table_totaux_hors_option {
+  margin: 0px 0px 10px 0px;
+  display: table;
+  page-break-inside: avoid;
+  width: fit-content;
+  align-self: flex-end;
+  border-collapse: collapse;
+  border: none;
+  padding: 0px;
+  transform: translateX(3cm);
+}
+
+.table_date {
+  margin: 0px 0px 10px 0px;
+  display: table;
+  page-break-inside: avoid;
+  width: fit-content;
+  align-self: flex-end;
+  border-collapse: collapse;
+  border: none;
+  padding: 0px;
+}
+.table_totaux tr {
+  display: flex;
+  justify-content: end;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.green {
+  background-color: #296b77;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  color: white;
+}
+.yellow {
+  background-color: #eccc8c !important;
+  color: white !important;
+}
+.first_column {
+  border: 0.2px solid black;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0px;
+}
+.first_column_acompte {
+  border: 0.2px solid white;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0px;
+}
+.second_column {
+  width: 4cm;
+  margin: 0px;
+  padding: 3px;
+  color: black;
+  border: 0.2px solid black;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+}
+.second_column_acompte {
+  width: 3cm;
+  margin: 0px;
+  padding: 3px;
+  color: black;
+  border: 0.2px solid white;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+}
+.section__acompte {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 100%;
+  page-break-inside: avoid;
+}
+
+.table_acompte_title {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 30px 0px 0px 80px;
+  font-size: 14px;
+  align-self: flex-start;
+}
+.table_acompte {
+  width: 100%;
+}
+.table_acompte td {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+.table_acompte__tva {
+  color: rgb(160, 160, 160);
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+.table_acompte__montant {
+  white-space: nowrap;
+  width: 4cm;
+}
+.text_end {
+  display: flex;
+  align-self: flex-start;
+  display: flex;
+  position: relative;
+  left: 50%;
+  width: 16.5cm;
+  right: 50%;
+  margin-top: 30px;
+  page-break-inside: avoid;
+}

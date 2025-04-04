@@ -1,2 +1,6 @@
 node_modules/
 .cache/
+files
+front_template_devis/images
+front_template_devis/style.css
+front_template_devis/style.css.map
