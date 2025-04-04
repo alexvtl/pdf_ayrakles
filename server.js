@@ -25,8 +25,9 @@ app.get("/pdf/:uuid", (req, res) => {
 
 app.post("/generate-pdf", async (req, res) => {
   const data = req.body || [];
-
+  // créer tableaux
   const table = renderTableaux(data);
+  // créer image logo
   const imageslogo = `<img style="object-fit: cover;height: 4cm;width=100%;" src="${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_devis/index.html");
@@ -76,6 +77,7 @@ app.post("/generate-pdf", async (req, res) => {
 
     res.set({ "Content-Type": "application/json" });
     const json = { message: "PDF généré", uuid };
+
     res.json(JSON.stringify(json));
 
     await browser.close();
