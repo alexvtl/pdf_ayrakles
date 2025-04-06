@@ -21,8 +21,8 @@ const renderTableaux = (Data) => {
   Data.lots.forEach((lot) => {
     let html = `
      <tr class="section__lot">
-      <td colspan="5" class="section__lot__name td_padding">${lot.nom}</td>
-      <td class="section__lot__total td_padding total">${lot.totalLot} €</td>
+      <td colspan="5" class="section__lot__name td_padding">${lot.name}</td>
+      <td class="section__lot__total td_padding total">${lot.lots_sum} €</td>
     </tr>
       
     `;
@@ -30,8 +30,8 @@ const renderTableaux = (Data) => {
     lot.pieces.forEach((piece) => {
       html += `
     <tr class="section__piece">
-      <td colspan="5" class="section__piece__name">${piece.nom}</td>
-      <td class="section__piece__price">${piece.totalPiece} €</td>
+      <td colspan="5" class="section__piece__name">${piece.name}</td>
+      <td class="section__piece__price">${piece.pieces_sum} €</td>
     </tr>
       `;
 
@@ -39,25 +39,25 @@ const renderTableaux = (Data) => {
         html += `
           <tr class="section__prestation">
             <td colspan="1" class="section__prestation__info td_padding">
-              <div class="section__prestation__info__name">${presta.nom}</div>
+              <div class="section__prestation__info__name">${presta.name}</div>
               <div class="section__prestation__info__description">${
                 presta.description || ""
               }</div>
             </td>
             <td class="section__prestation__quantity td_padding">${
-              presta.quantite
+              presta.quantity
             }</td>
             <td class="section__prestation__unit td_padding">${
               presta.unite
             }</td>
             <td class="section__prestation__price_uht td_padding">${
-              presta.prix_unitaire
+              presta.puht
             }</td>
             <td class="section__prestation__remise td_padding">${
-              presta.remise
+              presta.tva
             } %</td>
             <td class="section__prestation__price td_padding">${
-              presta.total
+              presta.ptht
             } €</td>
           </tr>
         `;
