@@ -77,6 +77,7 @@ app.post("/generate-pdf", async (req, res) => {
 
     res.set({ "Content-Type": "application/json" });
     const json = { message: "PDF généré", uuid };
+    console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
 
     res.json(JSON.stringify(json));
 
