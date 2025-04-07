@@ -81,7 +81,6 @@ app.post("/generate-pdf", async (req, res) => {
 
     res.set({
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="devis-${uuid}.pdf"`,
     });
     console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
 
