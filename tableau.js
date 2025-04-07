@@ -65,7 +65,59 @@ const renderTableaux = (Data) => {
     });
     tableaux += html;
   });
-  tableaux += `</table>`;
+
+  if (Data.lots_option.length > 0) {
+    Data.lots_option.forEach((lot) => {
+      let html_option = `
+     <tr class="section__lot">
+      <td colspan="5" class="section__lot__name td_padding">${lot.name} (Option)</td>
+      <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
+    </tr>
+      
+    `;
+
+      lot.pieces.forEach((piece) => {
+        html_option += `
+    <tr class="section__piece">
+      <td colspan="5" class="section__piece__name">${piece.name} (Option)</td>
+      <td class="section__piece__price">${piece.pieces_sum}</td>
+    </tr>
+      `;
+
+        piece.prestations.forEach((presta) => {
+          html_option += `
+          <tr class="section__prestation">
+            <td colspan="1" class="section__prestation__info td_padding">
+              <div class="section__prestation__info__name">${presta.name}</div>
+              <div class="section__prestation__info__description">${
+                presta.description || ""
+              }</div>
+            </td>
+            <td class="section__prestation__quantity td_padding">${
+              presta.quantity
+            }</td>
+            <td class="section__prestation__unit td_padding">${
+              presta.unite
+            }</td>
+            <td class="section__prestation__price_uht td_padding">${
+              presta.puht
+            }</td>
+            <td class="section__prestation__remise td_padding">${
+              presta.tva
+            }</td>
+            <td class="section__prestation__price td_padding">${
+              presta.ptht
+            }</td>
+          </tr>
+        `;
+        });
+      });
+      tableaux += html_option;
+      tableaux += `</table>`;
+    });
+  } else {
+    tableaux += `</table>`;
+  }
 
   let tableaux_totaux = `
  

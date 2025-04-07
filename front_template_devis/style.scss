@@ -38,7 +38,12 @@ body {
       text-align: end;
       color: black;
     }
-
+    &__client-adresse-1,
+    &__client-adresse-2 {
+      white-space: nowrap;
+      text-align: end;
+      color: black;
+    }
     &__date {
       text-align: end;
       margin-top: 20px !important;
