@@ -85,7 +85,7 @@ app.post("/generate-pdf", async (req, res) => {
     });
     console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
 
-    res.send(pdfbuffer);
+    res.end(pdfbuffer);
 
     await browser.close();
   } catch (err) {
