@@ -22,7 +22,7 @@ const renderTableaux = (Data) => {
     let html = `
      <tr class="section__lot">
       <td colspan="5" class="section__lot__name td_padding">${lot.name}</td>
-      <td class="section__lot__total td_padding total">${lot.lots_sum} €</td>
+      <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr>
       
     `;
@@ -31,7 +31,7 @@ const renderTableaux = (Data) => {
       html += `
     <tr class="section__piece">
       <td colspan="5" class="section__piece__name">${piece.name}</td>
-      <td class="section__piece__price">${piece.pieces_sum} €</td>
+      <td class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
       `;
 
@@ -55,10 +55,10 @@ const renderTableaux = (Data) => {
             }</td>
             <td class="section__prestation__remise td_padding">${
               presta.tva
-            } %</td>
+            }</td>
             <td class="section__prestation__price td_padding">${
               presta.ptht
-            } €</td>
+            }</td>
           </tr>
         `;
       });
@@ -188,7 +188,7 @@ const renderTableaux = (Data) => {
         <tr class="table_acompte__acompte_tr">
           <td colspan="1" class="table_acompte__acompte_tr__text ">${acompte.nom}</td>
           <td class="table_acompte__acompte_tr__tva ">${acompte.taux} %</td>  
-          <td class="table_acompte__acompte_tr__montant second_column_acompte">${acompte.montant} € ttc</td>
+          <td class="table_acompte__acompte_tr__montant second_column_acompte">${acompte.montant} ttc</td>
         </tr>
       `;
   });
