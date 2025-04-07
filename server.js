@@ -35,7 +35,7 @@ app.post("/generate-pdf", async (req, res) => {
   // 🆔 Générer un UUID pour le nom du fichier
   const uuid = uuidv4();
 
-  const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
+  // const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
   // 🎨 Lire et injecter le CSS dans un <style>
   const cssPath = path.join(__dirname, "./front_template_devis/style.css");
   const css = fs.readFileSync(cssPath, "utf-8");
@@ -58,8 +58,7 @@ app.post("/generate-pdf", async (req, res) => {
     const page = await browser.newPage();
 
     await page.setContent(htmlPage, { waitUntil: "networkidle0" });
-    await page.pdf({
-      path: filePath,
+    const pdfbuffer = await page.pdf({
       format: "A4",
       printBackground: true,
       displayHeaderFooter: true,
@@ -72,7 +71,7 @@ app.post("/generate-pdf", async (req, res) => {
           <div style=" position:absolute; bottom:2.2cm;  width:15cm; margin:0; left: 50%;transform: translateX(-50%);
         right: 50%;  display:flex; justify-content:space-between; align-items:center;">
           <span style="-webkit-print-color-adjust: exact; font-size:13px;color:rgb(168, 168, 168); max-width:65%">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – CAPITAL SOCIAL ${data.capital_social} –
-            SIREN ${data.siren}} – DECENNALE ${data.assurance_nom} N° CONTRAT : ${data.contrat_decennale} –
+            SIREN ${data.siren} – DECENNALE ${data.assurance_nom} N° CONTRAT : ${data.contrat_decennale} –
             EMAIL : ${data.email_entreprise} / TEL : ${data.telephone_entreprise}
           </span>
           <span style="-webkit-print-color-adjust: exact; font-size:16px ;font-weight:bold ;color: #296b77" class="pageNumber"></span>
@@ -81,11 +80,13 @@ app.post("/generate-pdf", async (req, res) => {
       margin: { top: "60px", bottom: "4cm" },
     });
 
-    res.set({ "Content-Type": "application/json" });
-    const json = { "message": "PDF généré", "pdf_id": uuid };
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="devis-${uuid}.pdf"`,
+    });
     console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
 
-    res.json(json);
+    res.send(pdfbuffer);
 
     await browser.close();
   } catch (err) {
