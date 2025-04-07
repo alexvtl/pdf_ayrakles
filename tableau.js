@@ -125,14 +125,14 @@ const renderTableaux = (Data) => {
       tableaux_totaux += `
       <tr class="table_totaux__option__tva">
         <td colspan="1" class="table_totaux__option__tva__text green td_padding first_column">TVA ${tva.taux} %</td>
-        <td class="table_totaux__option__tva__montant second_column">${tva.montant} €</td>
+        <td class="table_totaux__option__tva__montant second_column">${tva.montant}</td>
       </tr>
       `;
     });
     tableaux_totaux += `
     <tr class="table_totaux__option__total_ttc">
       <td colspan="1" class="table_totaux__option__total_ttc__text green td_padding first_column">Total ttc (options)</td>
-      <td class="table_totaux__option__total_ttc__montant second_column yellow">${Data.totaux.option.montant_ttc} €</td>
+      <td class="table_totaux__option__total_ttc__montant second_column yellow">${Data.totaux.option.montant_ttc}</td>
     </tr>
     </tbody>
     </table>`;
