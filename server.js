@@ -28,7 +28,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // créer tableaux
   const table = renderTableaux(data);
   // créer image logo
-  const imageslogo = `<img style="object-fit: cover;height: 4cm;width:100%;max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  const imageslogo = `<img style="object-fit: cover;height: 4cm;max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_devis/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
