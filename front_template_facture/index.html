@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section id="section_header">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+          alt=""
+          id="section_header__logo" />
+        <div id="section_header__details_facture">
+          <h1
+            id="section_header__details_facture__titre"
+            class="section_header__details_facture__titre">
+            Facture
+          </h1>
+          <p
+            id="section_header__details_facture__ref"
+            class="section_header__details_facture__text">
+            Référence : {{reference}}
+          </p>
+          <p
+            id="section_header__details_facture__date"
+            class="section_header__details_facture__text">
+            Date : {{date}}
+          </p>
+          <p id="section_header__details_facture__date_limite">
+            A régler avant le : {{date_limite_1}}
+          </p>
+        </div>
+      </section>
+      <section id="section_entreprise_client">
+        <div id="section_entreprise_client__entreprise">
+          <p>{{entreprise_nom}}</p>
+          <p>{{entreprise_adresse_1}}</p>
+          <p>{{entreprise_adresse_2}}</p>
+        </div>
+        <div id="section_entreprise_client__client">
+          <p>{{client_nom}}</p>
+          <p>{{client_adresse_1}}</p>
+          <p>{{client_adresse_2}}</p>
+        </div>
+      </section>
+      <section id="section_info_projet">
+        <p id="section_info_projet__nom">Nom du chantier : {{nom_chantier}}</p>
+        <p id="section_info-projet__adresse">
+          Adresse chantier : {{adresse_chantier}}
+        </p>
+      </section>
+      <section id="section_table">{{table_facture}}</section>
+      <section id="section_conditions_total">
+        <div id="section_conditions_total__conditions">
+          <p id="section_conditions_total__titre">Conditions de paiement</p>
+          <p id="section_conditions_total__date_limite">
+            Paiement à effectuer avant le : {{date_limite_2}}
+          </p>
+          <p id="section_conditions_total__communication">
+            Communication structurée : {{communication}}
+          </p>
+          <p id="section_conditions_total__iban">IBAN : {{entreprise_iban}}</p>
+          <p id="section_conditions_total__bic">BIC : {{entreprise_bic}}</p>
+        </div>
+        <div id="section_conditions_total__total">{{table_total}}</div>
+      </section>
+      <section id="section_commentaire">
+        <p id="section_commentaire__texte">
+          En cas de retard de paiement, de paiement partiel ou de non paiement
+          total d'une facture à la date de paiement définie dans ce document,
+          une pénalité de retard est applicable. Cette pénalité est égale à une
+          fois et demie (1,5) le taux d'intérêt légal calculé sur le montant
+          hors taxe des sommes restant dues. La pénalité est applicable dès le
+          premier jour de retard.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
