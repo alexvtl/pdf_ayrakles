@@ -21,7 +21,7 @@ const tableau_facture = (Data) => {
   Data.acomptes.forEach((acompte) => {
     tableau += `
     <tr>
-              <td class="table__content">1</td>
+              <td class="table__content"></td>
               <td id="section_table__table__designation" class="table__content">
                 ${acompte.text}
               </td>

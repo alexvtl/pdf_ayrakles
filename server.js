@@ -158,7 +158,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
 <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
           ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
           ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
-          SIRET ${data.entreprise_siret} / TVA ${data.entreprise_tva}} - Code APE
+          SIRET ${data.entreprise_siret} / TVA ${data.entreprise_tva} - Code APE
           ${data.entreprise_ape} - contrat d’assurance :
           ${data.entreprise_assurance}
         </span>
