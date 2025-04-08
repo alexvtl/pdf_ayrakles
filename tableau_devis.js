@@ -72,8 +72,7 @@ const renderTableaux = (Data) => {
      <tr class="section__lot">
       <td colspan="5" class="section__lot__name td_padding">${lot.name} (Option)</td>
       <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
-    </tr>
-      
+    </tr> 
     `;
 
       lot.pieces.forEach((piece) => {
@@ -113,8 +112,8 @@ const renderTableaux = (Data) => {
         });
       });
       tableaux += html_option;
-      tableaux += `</table>`;
     });
+    tableaux += `</table>`;
   } else {
     tableaux += `</table>`;
   }
