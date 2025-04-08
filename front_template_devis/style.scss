@@ -368,13 +368,33 @@ body {
   thead {
     width: 100%;
   }
+  th:nth-of-type(1) {
+    width: 8cm;
+  }
+  th:nth-of-type(2) {
+    width: 4cm;
+  }
+  th:nth-of-type(3) {
+    width: 4cm;
+  }
+
   td {
     padding: 0;
     margin: 0;
     border: none;
   }
+
   &__acompte_tr {
     width: 100%;
+    td:nth-of-type(1) {
+      width: 8cm;
+    }
+    td:nth-of-type(2) {
+      width: 4cm;
+    }
+    td:nth-of-type(3) {
+      width: 4cm;
+    }
     &__text {
       font-size: 14px;
       @include first_column_acompte;
