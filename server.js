@@ -100,7 +100,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
   const table_facture = tableau_facture(data);
   const table_totals_facture = tableau_total(data);
   // créer image logo
-  const imageslogo_facture = `<img #section_header__logo style="object-fit: cover;height: 4cm;width:100px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  const imageslogo_facture = `<img id="section_header__logo" style="object-fit: cover;height: 4cm;width:100px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_facture/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
@@ -115,6 +115,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
   // 🖼️ Remplacer {{table}} par le tableau HTML
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
+    .replace("{{image_logo}}", imageslogo_facture)
     .replace("{{client_nom}}", data.client_name)
     .replace("{{client_adresse_1}}", data.client_adresse_1)
     .replace("{{client_adresse_2}}", data.client_adresse_2)
@@ -158,8 +159,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
 <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
           ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
           ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
-          SIRET ${data.entreprise_siret} / TVA ${data.entreprise_tva} - Code APE
-          ${data.entreprise_ape} - contrat d’assurance :
+          SIREN ${data.entreprise_siren} / TVA ${data.entreprise_tva} - contrat d’assurance :
           ${data.entreprise_assurance}
         </span>
         <span style="-webkit-print-color-adjust: exact;font-size:13px; align-self: flex-end;" class="pageNumber"></span>
