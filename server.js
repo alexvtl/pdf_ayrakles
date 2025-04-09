@@ -100,7 +100,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
   const table_facture = tableau_facture(data);
   const table_totals_facture = tableau_total(data);
   // créer image logo
-  const imageslogo_facture = `<img id="section_header__logo" style="object-fit: cover;height: 4cm;width:100px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  const imageslogo_facture = `<img id="section_header__logo" style="object-fit: cover;height: 4cm;width:150px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_facture/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
@@ -155,7 +155,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
        </div>`,
 
       footerTemplate: `
-          <div style=" position:absolute; bottom: 0.5cm; left:0cm; margin:0 0.5cm;display: flex;font-size:13px;flex-direction: column;justify-content: center; max-width: 20.5cm;">
+          <div style=" position:absolute; bottom: 0.5cm; left:0cm; margin:0 0.5cm;display: flex;font-size:13px;flex-direction: column;justify-content: center; min-width: 20.5cm;">
 <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
           ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
           ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
