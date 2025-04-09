@@ -77,6 +77,32 @@ const tableau_total = (Data) => {
               </tr>
             </tbody>
           </table>`;
+
+  if (Data.facture_solde == "true" && Data.recap_acomptes.length > 0) {
+    tableau_total_table += `
+      <table id="section_conditions_total__table__recap_acomptes">
+            <thead>
+              <tr>
+                <th colspan="2" id="section_conditions_total__table__recap_acomptes__premier_colonne">
+                Recapitutif acomptes payés
+                </th>
+            
+              </tr>
+            </thead>
+            <tbody>`;
+    Data.recap_acomptes.forEach((acompte) => {
+      tableau_total_table += `
+        <tr class="deuxieme_ligne">
+                <td class="premiere_colonne">${acompte.date_facturation}</td>
+                <td
+                  class="deuxieme_colonne"
+                  id="section_conditions_total__table__recap_acomptes__montant">
+                  ${acompte.total_ttc}
+                </td>
+              </tr>`;
+    });
+    tableau_total_table += `</tbody></table>`;
+  }
   return tableau_total_table;
 };
 

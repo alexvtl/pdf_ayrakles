@@ -202,6 +202,9 @@ main {
   text-align: right;
 }
 #section_conditions_total__total {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 30%;
 }
 #section_conditions_total__total__table {
@@ -247,6 +250,28 @@ main {
   width: 100%;
   color: white;
   background-color: #eccc8c;
+}
+
+#section_conditions_total__table__recap_acomptes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#section_conditions_total__table__recap_acomptes thead {
+  width: 100%;
+}
+#section_conditions_total__table__recap_acomptes th {
+  width: 100%;
+  border: none;
+}
+#section_conditions_total__table__recap_acomptes tbody {
+  width: 100%;
+}
+#section_conditions_total__table__recap_acomptes tr {
+  width: 100%;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
 }
 
 #section_commentaire {
