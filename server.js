@@ -159,7 +159,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
 <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
           ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
           ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
-          SIREN ${data.entreprise_siren} / TVA ${data.entreprise_tva} - contrat d’assurance :
+          SIREN ${data.entreprise_siren} - contrat d’assurance :
           ${data.entreprise_assurance}
         </span>
         <span style="-webkit-print-color-adjust: exact;font-size:13px; align-self: flex-end;" class="pageNumber"></span>
