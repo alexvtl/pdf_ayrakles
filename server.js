@@ -186,39 +186,45 @@ app.post("/generate-pdf/facture", async (req, res) => {
 app.post("/generate-pdf/avenant", async (req, res) => {
   const data = req.body || [];
   // créer tableaux
-  const table = renderTableaux_avenant(data);
+  const table_avenant = renderTableaux_avenant(data);
   // créer image logo
-  const imageslogo = `<img style="object-fit: cover;height: 4cm;max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  const imageslogo_avenant = `<img style="object-fit: cover;height: 4cm;max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
-  const htmlPath = path.join(__dirname, "./front_template_avenant/index.html");
-  let html = fs.readFileSync(htmlPath, "utf-8");
+  const htmlPath_avenant = path.join(
+    __dirname,
+    "./front_template_avenant/index.html"
+  );
+  let html_avenant = fs.readFileSync(htmlPath_avenant, "utf-8");
   // 🆔 Générer un UUID pour le nom du fichier
-  const uuid = uuidv4();
+  const uuid_avenant = uuidv4();
 
   // const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
   // 🎨 Lire et injecter le CSS dans un <style>
-  const cssPath = path.join(__dirname, "./front_template_avenant/style.css");
-  const css = fs.readFileSync(cssPath, "utf-8");
+  const cssPath_avenant = path.join(
+    __dirname,
+    "./front_template_avenant/style.css"
+  );
+  const css_avenant = fs.readFileSync(cssPath_avenant, "utf-8");
 
   // 🖼️ Remplacer {{table}} par le tableau HTML
-  const htmlPage = html
-    .replace("</head>", `<style>${css}</style></head>`)
+  const htmlPage_avenant = html_avenant
+    .replace("</head>", `<style>${css_avenant}</style></head>`)
     .replace("{{client_name}}", data.client_name)
     .replace("{{client_adresse_1}}", data.client_adresse_1)
     .replace("{{client_adresse_2}}", data.client_adresse_2)
     .replace("{{date}}", data.date)
     .replace("{{type_projet}}", data.type_projet)
     .replace("{{bien_lieu}}", data.bien_lieu)
-    .replace("{{table}}", table)
-    .replace("{{imagelogo}}", imageslogo);
+    .replace("{{table}}", table_avenant)
+    .replace("{{imagelogo}}", imageslogo_avenant);
 
   try {
     const browser = await puppeteer.launch();
 
     const page = await browser.newPage();
 
-    await page.setContent(htmlPage, { waitUntil: "networkidle0" });
-    const pdfbuffer = await page.pdf({
+    await page.setContent(htmlPage_avenant, { waitUntil: "networkidle0" });
+    const pdfbuffer_avenant = await page.pdf({
       format: "A4",
       printBackground: true,
       displayHeaderFooter: true,
@@ -243,9 +249,9 @@ app.post("/generate-pdf/avenant", async (req, res) => {
     res.set({
       "Content-Type": "application/pdf",
     });
-    console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
+    console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid_avenant}`);
 
-    res.end(pdfbuffer);
+    res.end(pdfbuffer_avenant);
 
     await browser.close();
   } catch (err) {
