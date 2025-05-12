@@ -254,6 +254,7 @@ body {
   page-break-inside: avoid;
   width: fit-content;
   border: none;
+  min-width: 100%;
   align-self: flex-end;
   border-collapse: collapse;
   padding: 0px;
