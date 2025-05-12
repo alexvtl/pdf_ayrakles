@@ -1,0 +1,454 @@
+@page {
+  size: A4;
+  -webkit-print-color-adjust: exact;
+  margin: 4.5cm 0;
+}
+body {
+  font-family: "Arial, sans-serif";
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+}
+
+.section_header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 18cm;
+  height: 4cm;
+  margin-bottom: 30px;
+}
+.section_header__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.section_header__right p {
+  margin: 0 0 3px 0;
+  font-size: 20px;
+  padding: 0;
+  text-align: end;
+  color: black;
+}
+.section_header__right__client-name {
+  font-weight: bold;
+  color: #000;
+  text-align: end;
+  color: black;
+}
+.section_header__right__client-adresse-1, .section_header__right__client-adresse-2 {
+  white-space: nowrap;
+  text-align: end;
+  color: black;
+}
+.section_header__right__date {
+  text-align: end;
+  margin-top: 20px !important;
+  color: black;
+}
+
+.section_info-projet {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 16.5cm;
+}
+.section_info-projet div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 22px;
+}
+.section_info-projet__text_1, .section_info-projet__text_2 {
+  font-size: 22px;
+  color: black;
+}
+.section_info-projet__text_2::before {
+  content: "      ";
+  height: 20px;
+  background-color: #eccc8c;
+  width: 100%;
+  margin-top: -1em;
+}
+
+.logo {
+  height: 60px;
+}
+
+.section_table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 22cm;
+  margin: 0;
+}
+
+.tableau_prestations {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+}
+.tableau_prestations__header {
+  background-color: #fff;
+  border: none;
+}
+.tableau_prestations__header th {
+  text-align: center;
+  color: #afafaf;
+  font-size: 12px;
+  border: none;
+  white-space: nowrap;
+}
+.tableau_prestations__header__total {
+  width: 3cm;
+  max-width: 3cm;
+}
+.tableau_prestations__header__libelle {
+  border: none;
+}
+
+.section__lot {
+  background-color: #296b77;
+  border: none;
+}
+.section__lot td {
+  font-size: 22px;
+  color: #fff;
+  border: none;
+}
+.section__lot__name {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  border: none;
+  background-color: #296b77;
+  color: #fff;
+  font-style: italic;
+}
+.section__lot__total {
+  background-color: #296b77;
+  width: 3cm;
+  white-space: nowrap;
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+}
+
+.section__piece td {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  background-color: #eccc8c;
+  border: none;
+}
+.section__piece__price {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  text-align: center;
+  font-size: 18px;
+}
+
+.section__prestation {
+  page-break-inside: avoid;
+  margin-bottom: 1px;
+}
+.section__prestation__info {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+}
+.section__prestation__info__name {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  border: none;
+}
+.section__prestation__info__description {
+  font-size: 9px;
+  text-align: left;
+  color: #afafaf;
+  border: none;
+  width: 8cm;
+}
+.section__prestation__price {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+.section__prestation__price_uht, .section__prestation__quantity, .section__prestation__unit, .section__prestation__remise {
+  padding: 3px 4px;
+  vertical-align: middle;
+  max-width: 8cm;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  white-space: nowrap;
+  border: none;
+}
+
+.section_info-projet__text_1 {
+  font-weight: bold;
+  color: #000;
+}
+.section_info-projet__text_2 {
+  font-weight: bold;
+  color: #000;
+}
+.section_info-projet__bien_lieu {
+  font-size: 22px;
+}
+.section_info-projet__type_projet {
+  font-size: 22px;
+}
+
+.table_totaux {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  margin: 40px 0;
+}
+.table_totaux tr {
+  display: flex;
+  justify-content: flex-end;
+  border: none;
+}
+.table_totaux__hors_option {
+  margin: 0px 0px 10px 0px;
+  display: table;
+  page-break-inside: avoid;
+  width: fit-content;
+  border: none;
+  align-self: flex-end;
+  border-collapse: collapse;
+  padding: 0px;
+  transform: translateX(3cm);
+}
+.table_totaux__hors_option td {
+  margin: 0;
+  border: 0.1px solid #000;
+}
+.table_totaux__hors_option__total_ht {
+  width: auto;
+}
+.table_totaux__hors_option__tva {
+  width: auto;
+}
+.table_totaux__hors_option__total_ttc {
+  width: auto;
+}
+.table_totaux__option {
+  margin: 0px 0px 10px 0px;
+  display: table;
+  page-break-inside: avoid;
+  width: fit-content;
+  align-self: flex-end;
+  border-collapse: collapse;
+  padding: 0px;
+  border: none;
+  transform: translateX(3cm);
+}
+.table_totaux__option td {
+  margin: 0;
+  border: 0.2px solid #000;
+}
+.table_totaux__option__total_ht {
+  width: auto;
+}
+.table_totaux__option__tva {
+  width: auto;
+}
+.table_totaux__option__total_ttc {
+  width: auto;
+}
+
+.table_date {
+  display: table;
+  border-collapse: collapse;
+  width: fit-content;
+  page-break-inside: avoid;
+  border: none;
+  align-self: flex-end;
+  margin: 0 0 10px 0;
+  transform: translateX(3cm);
+}
+.table_date__date_demarrage td {
+  margin: 0;
+  border: 0.2px solid #000;
+}
+.table_date__date_duree td {
+  margin: 0;
+  border: 0.2px solid #000;
+}
+
+.green {
+  background-color: #296b77;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+}
+
+.yellow {
+  background-color: #eccc8c !important;
+  color: #fff !important;
+}
+
+.first_column {
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0;
+}
+
+.first_column_acompte {
+  border: none;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0;
+}
+
+.second_column {
+  width: 4cm;
+  margin: 0;
+  padding: 3px;
+  color: #000;
+  font-weight: bold;
+  color: #000;
+  font-size: 14px;
+  text-align: right;
+}
+
+.second_column_acompte {
+  margin: 0;
+  padding: 3px;
+  color: #000;
+  font-weight: bold;
+  color: #000;
+  font-size: 14px;
+  text-align: right;
+  width: 3cm;
+  border: none;
+}
+
+.section__acompte {
+  min-width: 100%;
+  position: relative;
+  border: none;
+  page-break-inside: avoid;
+  margin-bottom: 20px;
+}
+.section__acompte__title {
+  font-weight: bold;
+  color: #000;
+  text-decoration: underline;
+  margin: 30px 0 0 80px;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.table_acompte {
+  align-self: flex-start;
+  position: relative;
+  min-width: 100%;
+}
+.table_acompte thead {
+  width: 100%;
+}
+.table_acompte th:nth-of-type(1) {
+  width: 8cm;
+}
+.table_acompte th:nth-of-type(2) {
+  width: 4cm;
+}
+.table_acompte th:nth-of-type(3) {
+  width: 4cm;
+}
+.table_acompte td {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.table_acompte__acompte_tr {
+  width: 100%;
+}
+.table_acompte__acompte_tr td:nth-of-type(1) {
+  width: 8cm;
+}
+.table_acompte__acompte_tr td:nth-of-type(2) {
+  width: 4cm;
+}
+.table_acompte__acompte_tr td:nth-of-type(3) {
+  width: 4cm;
+}
+.table_acompte__acompte_tr__text {
+  font-size: 14px;
+  border: 0.2px solid white;
+  width: 8cm;
+  white-space: nowrap;
+  padding: 3px;
+  margin: 0px;
+  text-align: left;
+}
+.table_acompte__acompte_tr__tva {
+  color: rgb(160, 160, 160);
+  font-weight: bold;
+  color: #000;
+  font-size: 14px;
+  text-align: center;
+  border: none;
+}
+.table_acompte__acompte_tr__montant {
+  white-space: nowrap;
+  width: 4cm;
+  font-size: 14px;
+  border: none;
+  text-align: right;
+}
+
+.text_end {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 18cm;
+  height: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-size: 15px;
+  page-break-inside: avoid;
+  font-style: italic;
+}
+
+/*# sourceMappingURL=style.css.map */

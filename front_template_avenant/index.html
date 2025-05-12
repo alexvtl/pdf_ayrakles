@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Devis Ayrakles</title>
+  </head>
+  <body>
+    <div>
+      <img
+        class="img_corner"
+        src="./front_template_avenant/images/images/corner.png"
+        alt="" />
+      <header class="section_header">
+        {{imagelogo}}
+        <div class="section_header__right">
+          <p class="section_header__right__client-name">{{client_name}}</p>
+          <p class="section_header__right__client-adresse-1">
+            {{client_adresse_1}}
+          </p>
+          <p class="section_header__right__client-adresse-2">
+            {{client_adresse_2}}
+          </p>
+          <p class="section_header__right__date">Le {{date}}</p>
+        </div>
+      </header>
+      <div class="section_info-projet">
+        <div>
+          <p class="section_info-projet__text_1 bold">Objet:</p>
+          <p class="section_info-projet__type_projet">{{type_projet}}</p>
+        </div>
+        <div>
+          <p class="section_info-projet__text_2 bold">Adresse du marché:</p>
+          <p class="section_info-projet__bien_lieu">{{bien_lieu}}</p>
+        </div>
+      </div>
+      <div class="section_table">{{table}}</div>
+      <div class="text_end">
+        Le devis est valable pour son intégralité, les prix sont fermes pour une
+        durée de 1 mois, au-delà ils seront révisables. Il est et reste la
+        propriété intellectuelle de son émetteur et ne doit, sauf accord
+        préalable, en aucun cas être remis à des tiers.
+      </div>
+    </div>
+
+    <!-- <div
+      style="
+        position: absolute;
+        bottom: 2.2cm;
+        width: 15cm;
+        margin: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        right: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      ">
+      <span
+        style="
+          -webkit-print-color-adjust: exact;
+          font-size: 13px;
+          color: rgb(168, 168, 168);
+          max-width: 65%;
+        "
+        >{{nom_entreprise}}, {{adresse_entreprise}} – {{forme_juridique}} –
+        CAPITAL SOCIAL {{capital_social}} – SIREN {{siren}} – DECENNALE
+        {{assurance_nom}} N° CONTRAT : {{contrat_decennale}} – EMAIL :
+        {{email_entreprise}} / TEL : {{telephone_entreprise}}
+      </span>
+      <span
+        style="
+          -webkit-print-color-adjust: exact;
+          font-size: 16px;
+          font-weight: bold;
+          color: #296b77;
+        "
+        class="pageNumber"></span>
+    </div> -->
+  </body>
+</html>
