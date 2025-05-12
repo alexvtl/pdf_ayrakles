@@ -100,6 +100,7 @@ const renderTableaux_avenant = (Data) => {
   </tr>
   </tbody>
   </table>
+  </table>
   `;
 
   tableaux += `<div class="table_totaux">${tableaux_totaux}</div>`;

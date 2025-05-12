@@ -197,7 +197,7 @@ app.post("/generate-pdf/avenant", async (req, res) => {
 
   // const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
   // 🎨 Lire et injecter le CSS dans un <style>
-  const cssPath = path.join(__dirname, "./front_template_devis/style.css");
+  const cssPath = path.join(__dirname, "./front_template_avenant/style.css");
   const css = fs.readFileSync(cssPath, "utf-8");
 
   // 🖼️ Remplacer {{table}} par le tableau HTML

@@ -40,7 +40,8 @@ body {
   text-align: end;
   color: black;
 }
-.section_header__right__client-adresse-1, .section_header__right__client-adresse-2 {
+.section_header__right__client-adresse-1,
+.section_header__right__client-adresse-2 {
   white-space: nowrap;
   text-align: end;
   color: black;
@@ -67,7 +68,8 @@ body {
   align-items: center;
   font-size: 22px;
 }
-.section_info-projet__text_1, .section_info-projet__text_2 {
+.section_info-projet__text_1,
+.section_info-projet__text_2 {
   font-size: 22px;
   color: black;
 }
@@ -204,7 +206,10 @@ body {
   font-weight: bold;
   color: #000;
 }
-.section__prestation__price_uht, .section__prestation__quantity, .section__prestation__unit, .section__prestation__remise {
+.section__prestation__price_uht,
+.section__prestation__quantity,
+.section__prestation__unit,
+.section__prestation__remise {
   padding: 3px 4px;
   vertical-align: middle;
   max-width: 8cm;
