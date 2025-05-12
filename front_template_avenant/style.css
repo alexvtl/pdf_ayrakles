@@ -250,11 +250,14 @@ body {
 }
 .table_totaux__hors_option {
   margin: 0px 0px 10px 0px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 12cm;
   display: table;
   page-break-inside: avoid;
-  width: fit-content;
   border: none;
-  min-width: 100%;
   align-self: flex-end;
   border-collapse: collapse;
   padding: 0px;
