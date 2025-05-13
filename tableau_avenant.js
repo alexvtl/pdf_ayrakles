@@ -64,8 +64,8 @@ const renderTableaux_avenant = (Data) => {
       });
     });
     tableaux += html;
-    tableaux += `</table>`;
   });
+  tableaux += `</table>`;
 
   let tableaux_totaux = `
  
