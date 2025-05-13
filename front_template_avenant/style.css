@@ -251,7 +251,7 @@ body {
 .table_totaux__hors_option {
   margin: 0px 0px 10px 0px;
 
-  width: min-content;
+  width: fit-content;
   display: table;
   page-break-inside: avoid;
   border: none;
