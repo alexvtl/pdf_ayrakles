@@ -64,6 +64,7 @@ const renderTableaux_avenant = (Data) => {
       });
     });
     tableaux += html;
+    tableaux += `</table>`;
   });
 
   let tableaux_totaux = `
@@ -102,7 +103,7 @@ const renderTableaux_avenant = (Data) => {
   </table>
   `;
 
-  tableaux += `<div class="table_totaux">${tableaux_totaux}</div> </table>`;
+  tableaux += `<div class="table_totaux">${tableaux_totaux}</div>`;
 
   return tableaux;
 };
