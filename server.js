@@ -3,6 +3,10 @@ const puppeteer = require("puppeteer");
 const { renderTableaux } = require("./tableau_devis.js");
 const { tableau_total, tableau_facture } = require("./tableau_facture.js");
 const { renderTableaux_avenant } = require("./tableau_avenant.js");
+const {
+  tableau_total_avenant,
+  table_facture_avenant,
+} = require("./tableau_facture_avenant.js");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const fs = require("fs");
@@ -251,6 +255,94 @@ app.post("/generate-pdf/avenant", async (req, res) => {
     console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid_avenant}`);
 
     res.end(pdfbuffer_avenant);
+
+    await browser.close();
+  } catch (err) {
+    console.error("Erreur PDF :", err);
+    res.status(500).send("Erreur lors de la génération du PDF");
+  }
+});
+
+app.post("/generate-pdf/facture_avenant", async (req, res) => {
+  const data = req.body || [];
+  // créer tableaux
+  const table_facture_avenant_html = table_facture_avenant(data);
+  const table_totals_facture_avenant = tableau_total_avenant(data);
+  // créer image logo
+  const imageslogo_facture_avenant = `<img id="section_header__logo" style="object-fit: cover;height: 4cm;width:150px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  // 📁 Lire le HTML brut
+  const htmlPath = path.join(__dirname, "./front_template_facture/index.html");
+  let html = fs.readFileSync(htmlPath, "utf-8");
+  // 🆔 Générer un UUID pour le nom du fichier
+  const uuid = uuidv4();
+
+  // const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
+  // 🎨 Lire et injecter le CSS dans un <style>
+  const cssPath = path.join(__dirname, "./front_template_facture/style.css");
+  const css = fs.readFileSync(cssPath, "utf-8");
+
+  // 🖼️ Remplacer {{table}} par le tableau HTML
+  const htmlPage = html
+    .replace("</head>", `<style>${css}</style></head>`)
+    .replace("{{image_logo}}", imageslogo_facture_avenant)
+    .replace("{{client_nom}}", data.client_name)
+    .replace("{{client_adresse_1}}", data.client_adresse_1)
+    .replace("{{client_adresse_2}}", data.client_adresse_2)
+    .replace("{{reference}}", data.reference)
+    .replace("{{date_limite_1}}", data.date_limite)
+    .replace("{{date_limite_2}}", data.date_limite)
+    .replace("{{communication}}", data.communication)
+    .replace("{{entreprise_nom}}", data.entreprise_nom)
+    .replace("{{entreprise_adresse_1}}", data.entreprise_adresse_1)
+    .replace("{{entreprise_adresse_2}}", data.entreprise_adresse_2)
+    .replace("{{entreprise_siren}}", data.entreprise_siren)
+    .replace("{{entreprise_siret}}", data.entreprise_siret)
+    .replace("{{entreprise_iban}}", data.entreprise_iban)
+    .replace("{{entreprise_ape}}", data.entreprise_ape)
+    .replace("{{entreprise_bic}}", data.entreprise_bic)
+    .replace("{{entreprise_tva}}", data.entreprise_tva)
+    .replace("{{entreprise_assurance}}", data.entreprise_assurance)
+    .replace("{{date}}", data.date)
+    .replace("{{nom_chantier}}", data.nom_chantier)
+    .replace("{{adresse_chantier}}", data.adresse_chantier)
+    .replace("{{table_facture}}", table_facture_avenant_html)
+    .replace("{{table_total}}", table_totals_facture_avenant)
+    .replace("{{imagelogo}}", imageslogo_facture);
+
+  try {
+    const browser = await puppeteer.launch();
+
+    const page = await browser.newPage();
+
+    await page.setContent(htmlPage, { waitUntil: "networkidle0" });
+    const pdfbuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      displayHeaderFooter: true,
+      headerTemplate: `<div style=" position:absolute; top:1cm; left:1cm; width:19cm; margin:0cm  0cm 0cm 0cm; display:flex; justify-content:space-between;">
+        
+       </div>`,
+
+      footerTemplate: `
+          <div style=" position:absolute; bottom: 0.5cm; left:0cm; margin:0 0.5cm;display: flex;font-size:13px;flex-direction: column;justify-content: center; width: 20cm;">
+          <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
+          ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
+          ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
+          SIREN ${data.entreprise_siren} - contrat d’assurance :
+          ${data.entreprise_assurance}
+        </span>
+        <span style="-webkit-print-color-adjust: exact;font-size:13px; align-self: flex-end;" class="pageNumber"></span>
+      </div>
+        `,
+      margin: { top: "0.5cm", bottom: "0.5cm", left: "0.5cm", right: "0.5cm" },
+    });
+
+    res.set({
+      "Content-Type": "application/pdf",
+    });
+    console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
+
+    res.end(pdfbuffer);
 
     await browser.close();
   } catch (err) {
