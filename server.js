@@ -307,7 +307,7 @@ app.post("/generate-pdf/facture_avenant", async (req, res) => {
     .replace("{{adresse_chantier}}", data.adresse_chantier)
     .replace("{{table_facture}}", table_facture_avenant_html)
     .replace("{{table_total}}", table_totals_facture_avenant)
-    .replace("{{imagelogo}}", imageslogo_facture);
+    .replace("{{imagelogo}}", imageslogo_facture_avenant);
 
   try {
     const browser = await puppeteer.launch();
