@@ -220,7 +220,6 @@ app.post("/generate-pdf/avenant", async (req, res) => {
 
   try {
     const browser = await puppeteer.launch();
-
     const page = await browser.newPage();
 
     await page.setContent(htmlPage_avenant, { waitUntil: "networkidle0" });
