@@ -105,6 +105,8 @@ app.post("/generate-pdf/facture", async (req, res) => {
   const table_facture = tableau_facture(data);
   const table_totals_facture = tableau_total(data);
   console.log(table_totals_facture);
+  console.log(data.recap_acomptes.length > 0);
+  console.log(data.facture_solde == "true");
   // créer image logo
   const imageslogo_facture = `<img id="section_header__logo" style="object-fit: cover;height: 4cm;width:150px; max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
