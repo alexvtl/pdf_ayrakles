@@ -90,14 +90,14 @@ const tableau_total = (Data) => {
               </tr>
             </thead>
             <tbody>`;
-    Data.recap_acomptes.forEach((acompte) => {
+    Data.recap_acomptes.forEach((acompte_recap) => {
       tableau_total_table += `
         <tr class="deuxieme_ligne">
-                <td class="premiere_colonne">${acompte.date_facturation}</td>
+                <td class="premiere_colonne">${acompte_recap.date_facturation}</td>
                 <td
                   class="deuxieme_colonne"
                   id="section_conditions_total__table__recap_acomptes__montant">
-                  ${acompte.total_ttc}
+                  ${acompte_recap.total_ttc}
                 </td>
               </tr>`;
     });
