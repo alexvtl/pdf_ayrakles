@@ -79,6 +79,7 @@ const tableau_total = (Data) => {
           </table>`;
 
   if (Data.facture_solde == "true" && Data.recap_acomptes.length > 0) {
+    console.log(Data.facture_solde == "true" && Data.recap_acomptes.length > 0);
     tableau_total_table += `
       <table id="section_conditions_total__table__recap_acomptes">
             <thead>
