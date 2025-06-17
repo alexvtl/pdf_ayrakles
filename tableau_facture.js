@@ -84,7 +84,7 @@ const tableau_total = (Data) => {
             <thead>
               <tr>
                 <th colspan="2" id="section_conditions_total__table__recap_acomptes__premier_colonne">
-                Recapitulatif acomptes payés
+                Recapitulatif acomptes
                 </th>
             
               </tr>
