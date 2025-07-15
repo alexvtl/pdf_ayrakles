@@ -124,6 +124,7 @@ app.post("/generate-pdf/facture", async (req, res) => {
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
     .replace("{{image_logo}}", imageslogo_facture)
+    .replace("{{Type}}", String(data.type).toUpperCase())
     .replace("{{client_nom}}", data.client_name)
     .replace("{{client_adresse_1}}", data.client_adresse_1)
     .replace("{{client_adresse_2}}", data.client_adresse_2)
@@ -235,12 +236,8 @@ app.post("/generate-pdf/avenant", async (req, res) => {
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: `<div style=" position:absolute; top:1cm; left:1cm; width:19cm; margin:0cm  0cm 0cm 0cm; display:flex; justify-content:space-between;">
-        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;font-weight: bold">${String(
-          data.type
-        ).toUpperCase()}</span>
-        <span style=" font-size: 12px; color: #296b77;font-weight: bold;">${
-          data.type
-        } n°${data.numero_devis}</span>
+        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;font-weight: bold">AVENANT</span>
+        <span style=" font-size: 12px; color: #296b77;font-weight: bold;">Avenant n°${data.numero_devis}</span>
        </div>`,
 
       footerTemplate: `
@@ -292,6 +289,7 @@ app.post("/generate-pdf/facture_avenant", async (req, res) => {
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
     .replace("{{image_logo}}", imageslogo_facture_avenant)
+    .replace("{{Type}}", String(data.type).toUpperCase())
     .replace("{{client_nom}}", data.client_name)
     .replace("{{client_adresse_1}}", data.client_adresse_1)
     .replace("{{client_adresse_2}}", data.client_adresse_2)
