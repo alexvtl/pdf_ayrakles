@@ -131,7 +131,6 @@ app.post("/generate-pdf/facture", async (req, res) => {
     .replace("{{reference}}", data.reference)
     .replace("{{date_limite_1}}", data.date_limite)
     .replace("{{date_limite_2}}", data.date_limite)
-    .replace("{{communication}}", data.communication)
     .replace("{{entreprise_nom}}", data.entreprise_nom)
     .replace("{{entreprise_adresse_1}}", data.entreprise_adresse_1)
     .replace("{{entreprise_adresse_2}}", data.entreprise_adresse_2)
