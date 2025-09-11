@@ -24,7 +24,7 @@ const renderTableaux = (Data) => {
       <td colspan="5" class="section__lot__name td_padding">${lot.name}</td>
       <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr>
-      
+     <tr class="row-spacer"><td colspan="6"></td></tr>
     `;
 
     lot.pieces.forEach((piece) => {

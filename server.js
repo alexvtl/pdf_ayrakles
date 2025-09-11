@@ -86,7 +86,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
           <span style="-webkit-print-color-adjust: exact; font-size:16px ;font-weight:bold ;color: #296b77" class="pageNumber"></span>
           </div>
         `,
-      margin: { top: "60px", bottom: "4cm" },
+      margin: { top: "10px", bottom: "4cm" },
     });
 
     res.set({

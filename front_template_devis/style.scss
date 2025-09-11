@@ -66,12 +66,12 @@ body {
     &__client-adresse-2 {
       white-space: nowrap;
       text-align: end;
-      color: black;
+      color: #4b5563;
     }
     &__date {
       text-align: end;
       margin-top: 20px !important;
-      color: black;
+      color: #4b5563;
     }
   }
 }
@@ -82,7 +82,7 @@ body {
   width: 22cm;
   div {
     display: flex;
-    gap: 10px;
+    gap: 3px;
     align-items: center;
     font-size: 22px;
   }
@@ -91,6 +91,7 @@ body {
   &__text_2 {
     font-size: 22px;
     color: black;
+    font-family: variables.$font-family;
   }
 
   &__text_2::before {
@@ -104,6 +105,13 @@ body {
 
 .logo {
   height: 50px;
+}
+
+.ui-divider {
+  height: 1px;
+  width: 22cm;
+  background-color: #e5e7eb;
+  margin: 24px auto;
 }
 
 .section_table {
@@ -145,27 +153,35 @@ body {
 // }
 
 .section__lot {
-  background-color: variables.$color-green;
+  background-color: #eff6ff; // bg-blue-50
   border: none;
 
   td {
-    font-size: 22px;
-    color: variables.$color-white;
+    font-size: 20px;
+    color: #0f172a; // slate-900
     border: none;
+    padding: 12px; // p-3
   }
   &__name {
-    @include td-padding;
-    @include lot-name(variables.$color-white);
+    @include lot-name(#0f172a);
+    border-radius: 2px; // rounded-sm
   }
   &__total {
-    background-color: variables.$color-green;
+    background-color: transparent;
     width: 3cm;
     white-space: nowrap;
-    @include td-padding;
     text-align: center;
-    @include text-bold(variables.$color-white);
+    @include text-bold(#0f172a);
     border: none;
+    border-radius: 2px; // rounded-sm
   }
+  margin-bottom: 4px; // mb-1
+}
+
+.row-spacer td {
+  height: 4px;
+  background: transparent;
+  border: none;
 }
 
 .section__piece {
