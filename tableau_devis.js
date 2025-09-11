@@ -33,6 +33,7 @@ const renderTableaux = (Data) => {
       <td colspan="5" class="section__piece__name">${piece.name}</td>
       <td class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
+    <tr class="row-spacer-piece"><td colspan="6"></td></tr>
       `;
 
       piece.prestations.forEach((presta) => {
