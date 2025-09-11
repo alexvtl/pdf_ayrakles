@@ -77,16 +77,16 @@ app.post("/generate-pdf/devis", async (req, res) => {
        </div>`,
 
       footerTemplate: `
-          <div style=" position:absolute; bottom:2.2cm;  width:15cm; margin:0; left: 50%;transform: translateX(-50%);
+          <div style=" position:absolute; bottom:2.2cm;  width:22cm; margin:0; left: 50%;transform: translateX(-50%);
         right: 50%;  display:flex; justify-content:space-between; align-items:center;">
           <span style="-webkit-print-color-adjust: exact;color:rgb(168, 168, 168); max-width:65%;font-size:12px">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – capital social ${data.capital_social} –
             siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
-            email : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
+            ema<l : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
           </span>
           <span style="-webkit-print-color-adjust: exact; font-size:16px ;font-weight:bold ;color: #296b77" class="pageNumber"></span>
           </div>
         `,
-      margin: { top: "65px", bottom: "4cm" },
+      margin: { top: "80px", bottom: "4cm" },
     });
 
     res.set({
