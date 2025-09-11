@@ -34,7 +34,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // créer tableaux
   const table = renderTableaux(data);
   // créer image logo
-  const imageslogo = `<img style="object-fit: cover;height: 4cm;max-width:9cm;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  const imageslogo = `<img style="object-fit: cover;height: 4cm;max-width:9cm; margin-bottom: 10px;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_devis/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
@@ -49,6 +49,9 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // 🖼️ Remplacer {{table}} par le tableau HTML
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
+    .replace("{{name_entreprise}}", data.name_entreprise)
+    .replace("{{adresse_entreprise}}", data.adresse_entreprise)
+    .replace("{{telephone_entreprise}}", data.telephone_entreprise)
     .replace("{{client_name}}", data.client_name)
     .replace("{{client_adresse_1}}", data.client_adresse_1)
     .replace("{{client_adresse_2}}", data.client_adresse_2)
@@ -76,7 +79,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
       footerTemplate: `
           <div style=" position:absolute; bottom:2.2cm;  width:15cm; margin:0; left: 50%;transform: translateX(-50%);
         right: 50%;  display:flex; justify-content:space-between; align-items:center;">
-          <span style="-webkit-print-color-adjust: exact; font-size:13px;color:rgb(168, 168, 168); max-width:65%;font-size:12px">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – CAPITAL SOCIAL ${data.capital_social} –
+          <span style="-webkit-print-color-adjust: exact;color:rgb(168, 168, 168); max-width:65%;font-size:12px">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – CAPITAL SOCIAL ${data.capital_social} –
             siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
             email : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
           </span>
@@ -163,11 +166,11 @@ app.post("/generate-pdf/facture", async (req, res) => {
        </div>`,
 
       footerTemplate: `
-          <div style=" position:absolute; bottom: 0.5cm; left:0cm; margin:0 0.5cm;display: flex;font-size:13px;flex-direction: column;justify-content: center; width: 20cm;">
+          <div style=" position:absolute; bottom: 0.5cm; left:0cm; margin:0 0.5cm;display: flex;font-size:12px;flex-direction: column;justify-content: center; width: 20cm;">
           <span style="-webkit-print-color-adjust: exact; color:black;align-self: center; margin: 0;text-align: center;width: 90%;margin: auto;">
           ${data.entreprise_nom} - ${data.entreprise_adresse_1} -
-          ${data.entreprise_adresse_2} - Capital de ${data.entreprise_capital_social} €
-          SIREN ${data.entreprise_siren} - contrat d’assurance :
+          ${data.entreprise_adresse_2} - capital de ${data.entreprise_capital_social} €
+          siren ${data.entreprise_siren} - contrat d’assurance :
           ${data.entreprise_assurance}
         </span>
         <span style="-webkit-print-color-adjust: exact;font-size:13px; align-self: flex-end;" class="pageNumber"></span>

@@ -21,6 +21,29 @@ body {
   @include center-horizontal;
   @include size(18cm, 4cm);
   margin-bottom: 30px;
+  &__left {
+    @include flex-column;
+
+    p {
+      margin: 0 0 3px 0;
+      font-size: 20px;
+      padding: 0;
+      color: black;
+    }
+    &__name-entreprise {
+      @include text-bold;
+      text-align: left;
+      color: black;
+    }
+    &__adresse-entreprise {
+      text-align: left;
+      color: black;
+    }
+    &__telephone-entreprise {
+      text-align: left;
+      color: black;
+    }
+  }
 
   &__right {
     @include flex-column(flex-end);
