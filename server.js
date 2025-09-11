@@ -77,7 +77,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
        </div>`,
 
       footerTemplate: `
-          <div style=" position:absolute; bottom:2.2cm;  width:18cm; margin:0; left: 50%;transform: translateX(-50%);
+          <div style=" position:absolute; bottom:2.2cm; background-color:rgb(177, 120, 120);  width:18cm; margin:0; left: 50%;transform: translateX(-50%);
         right: 50%;  display:flex; justify-content:space-between; align-items:center;">
           <span style="-webkit-print-color-adjust: exact;color:rgb(168, 168, 168); max-width:65%;font-size:12px">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – capital social ${data.capital_social} –
             siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
