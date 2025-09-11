@@ -75,8 +75,10 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  gap: 10px;
+  gap: 0px;
   width: 22cm;
+  height: auto;
+  font-size: 16px;
   div {
     display: flex;
     gap: 3px;
@@ -464,7 +466,7 @@ body {
 
 .text_end {
   @include center-horizontal;
-  @include size(18cm, auto);
+  @include size(22cm, auto);
   margin-bottom: 30px;
   margin-top: 30px;
   font-size: 15px;

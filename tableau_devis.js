@@ -273,6 +273,27 @@ const renderTableaux = (Data) => {
         <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
           Data.totaux.hors_option.montant_ttc
         } €</div>
+        ${
+          Data.totaux?.option?.montant_ht
+            ? `
+        <div class="totals-card__cell totals-card__cell--blue">Total HT (options)</div>
+        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+          Data.totaux.option.montant_ht
+        } €</div>
+        ${Data.totaux.option.tva
+          .map(
+            (tva) => `
+        <div class="totals-card__cell totals-card__cell--muted">TVA ${tva.taux} %</div>
+        <div class="totals-card__cell totals-card__cell--muted totals-card__cell--right">${tva.montant} €</div>`
+          )
+          .join("")}
+        <div class="totals-card__cell totals-card__cell--blue">Total TTC (options)</div>
+        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+          Data.totaux.option.montant_ttc
+        } €</div>
+        `
+            : ""
+        }
         <div class="totals-card__cell totals-card__cell--top-border">Délai de démarrage (semaines)</div>
         <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right">${
           Data.date_demarrage || ""
@@ -297,7 +318,7 @@ const renderTableaux = (Data) => {
           (ac) => `
         <div class="payment-conditions__cell payment-conditions__cell--span-6">${ac.nom}</div>
         <div class="payment-conditions__cell payment-conditions__cell--span-3 payment-conditions__cell--center">${ac.taux} %</div>
-        <div class="payment-conditions__cell payment-conditions__cell--span-3 payment-conditions__cell--right">${ac.montant} €</div>`
+        <div class="payment-conditions__cell payment-conditions__cell--span-3 payment-conditions__cell--right">${ac.montant} ttc</div>`
         )
         .join("")}
     </div>
