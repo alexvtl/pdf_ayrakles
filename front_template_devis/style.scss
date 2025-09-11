@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 4.5cm 0;
+  margin: 2.5cm, 0, 4.5cm, 0;
 }
 
 body {
@@ -28,22 +28,19 @@ body {
       margin: 0 0 3px 0;
       font-size: 14px;
       padding: 0;
-      color: black;
       font-family: variables.$font-family;
     }
     &__name-entreprise {
-      @include text-bold;
-      font-size: 16px;
       text-align: left;
       color: black;
     }
     &__adresse-entreprise {
       text-align: left;
-      color: black;
+      color: #4b5563;
     }
     &__telephone-entreprise {
       text-align: left;
-      color: black;
+      color: #4b5563;
     }
   }
 
@@ -52,14 +49,11 @@ body {
 
     p {
       margin: 0 0 3px 0;
-      font-size: 20px;
       padding: 0;
       text-align: end;
-      color: black;
     }
 
     &__client-name {
-      @include text-bold;
       text-align: end;
       color: black;
     }
@@ -80,7 +74,7 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  width: 16cm;
+  width: 22cm;
   div {
     display: flex;
     gap: 3px;
