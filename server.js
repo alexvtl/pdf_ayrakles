@@ -49,7 +49,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // 🖼️ Remplacer {{table}} par le tableau HTML
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
-    .replace("{{name_entreprise}}", data.name_entreprise)
+    .replace("{{name_entreprise}}", data.nom_entreprise)
     .replace("{{adresse_entreprise}}", data.adresse_entreprise)
     .replace("{{telephone_entreprise}}", data.telephone_entreprise)
     .replace("{{client_name}}", data.client_name)

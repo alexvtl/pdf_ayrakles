@@ -19,8 +19,8 @@ body {
   display: flex;
   justify-content: space-between;
   @include center-horizontal;
-  @include size(18cm, 4cm);
-  margin-bottom: 30px;
+  @include size(22cm, auto);
+  margin-bottom: 0px;
   &__left {
     @include flex-column;
 
@@ -29,6 +29,7 @@ body {
       font-size: 20px;
       padding: 0;
       color: black;
+      font-family: variables.$font-family;
     }
     &__name-entreprise {
       @include text-bold;
@@ -78,8 +79,7 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  width: 16.5cm;
-
+  width: 22cm;
   div {
     display: flex;
     gap: 10px;
@@ -103,7 +103,7 @@ body {
 }
 
 .logo {
-  height: 60px;
+  height: 50px;
 }
 
 .section_table {
