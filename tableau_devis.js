@@ -119,78 +119,78 @@ const renderTableaux = (Data) => {
     tableaux += `</table>`;
   }
 
-  let tableaux_totaux = `
+  // let tableaux_totaux = `
 
-  <table class="table_totaux__hors_option">
-   <colgroup>
-    <col style="width: 8cm">
-    <col style="width: 3cm">
-  </colgroup>
-   <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr class="table_totaux__hors_option__total_ht">
-      <td colspan="1" class="table_totaux__hors_option__total_ht__text td_padding green first_column">Total HT (hors options)</td>
-      <td class="table_totaux__hors_option__total_ht__montant td_padding second_column">${Data.totaux.hors_option.montant_ht} €</td>
-  </tr>
-  `;
-  Data.totaux.hors_option.tva.forEach((tva) => {
-    tableaux_totaux += `
-    <tr class="table_totaux__hors_option__tva">
-      <td colspan="1" class="table_totaux__hors_option__tva__text td_padding green first_column">TVA ${tva.taux} %</td>
-      <td class="table_totaux__hors_option__tva__montant td_padding second_column">${tva.montant} €</td>
-    </tr>
-    `;
-  });
-  tableaux_totaux += `
-  <tr class="table_totaux__hors_option__total_ttc">
-    <td colspan="1" class="table_totaux__hors_option__total_ttc__text green td_padding first_column">Total ttc (hors options)</td>
-    <td class="table_totaux__hors_option__total_ttc__montant td_padding second_column yellow">${Data.totaux.hors_option.montant_ttc} €</td>
-  </tr>
-  </tbody>
-  </table>
-  `;
-  if (Data.totaux.option.montant_ht) {
-    tableaux_totaux += `
-  <table class="table_totaux__option">
-  <colgroup>
-    <col style="width: 8cm">
-    <col style="width: 3cm">
-  </colgroup>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table_totaux__option__total_ht">
-      <td colspan="1" class="table_totaux__option__total_ht__text green td_padding first_column">Total HT (options)</td>
-      <td class="table_totaux__option__total_ht__montant td_padding second_column">${Data.totaux.option.montant_ht} €</td>
-    </tr>
-    `;
-    Data.totaux.option.tva.forEach((tva) => {
-      tableaux_totaux += `
-      <tr class="table_totaux__option__tva">
-        <td colspan="1" class="table_totaux__option__tva__text green td_padding first_column">TVA ${tva.taux} %</td>
-        <td class="table_totaux__option__tva__montant second_column">${tva.montant}</td>
-      </tr>
-      `;
-    });
-    tableaux_totaux += `
-    <tr class="table_totaux__option__total_ttc">
-      <td colspan="1" class="table_totaux__option__total_ttc__text green td_padding first_column">Total ttc (options)</td>
-      <td class="table_totaux__option__total_ttc__montant second_column yellow">${Data.totaux.option.montant_ttc}</td>
-    </tr>
-    </tbody>
-    </table>`;
-  } else {
-    null;
-  }
+  // <table class="table_totaux__hors_option">
+  //  <colgroup>
+  //   <col style="width: 8cm">
+  //   <col style="width: 3cm">
+  // </colgroup>
+  //  <thead>
+  //   <tr>
+  //     <th></th>
+  //     <th></th>
+  //   </tr>
+  // </thead>
+  // <tbody>
+  // <tr class="table_totaux__hors_option__total_ht">
+  //     <td colspan="1" class="table_totaux__hors_option__total_ht__text td_padding green first_column">Total HT (hors options)</td>
+  //     <td class="table_totaux__hors_option__total_ht__montant td_padding second_column">${Data.totaux.hors_option.montant_ht} €</td>
+  // </tr>
+  // `;
+  // Data.totaux.hors_option.tva.forEach((tva) => {
+  //   tableaux_totaux += `
+  //   <tr class="table_totaux__hors_option__tva">
+  //     <td colspan="1" class="table_totaux__hors_option__tva__text td_padding green first_column">TVA ${tva.taux} %</td>
+  //     <td class="table_totaux__hors_option__tva__montant td_padding second_column">${tva.montant} €</td>
+  //   </tr>
+  //   `;
+  // });
+  // tableaux_totaux += `
+  // <tr class="table_totaux__hors_option__total_ttc">
+  //   <td colspan="1" class="table_totaux__hors_option__total_ttc__text green td_padding first_column">Total ttc (hors options)</td>
+  //   <td class="table_totaux__hors_option__total_ttc__montant td_padding second_column yellow">${Data.totaux.hors_option.montant_ttc} €</td>
+  // </tr>
+  // </tbody>
+  // </table>
+  // `;
+  // if (Data.totaux.option.montant_ht) {
+  //   tableaux_totaux += `
+  // <table class="table_totaux__option">
+  // <colgroup>
+  //   <col style="width: 8cm">
+  //   <col style="width: 3cm">
+  // </colgroup>
+  // <thead>
+  //   <tr>
+  //     <th></th>
+  //     <th></th>
+  //   </tr>
+  // </thead>
+  // <tbody>
+  //   <tr class="table_totaux__option__total_ht">
+  //     <td colspan="1" class="table_totaux__option__total_ht__text green td_padding first_column">Total HT (options)</td>
+  //     <td class="table_totaux__option__total_ht__montant td_padding second_column">${Data.totaux.option.montant_ht} €</td>
+  //   </tr>
+  //   `;
+  //   Data.totaux.option.tva.forEach((tva) => {
+  //     tableaux_totaux += `
+  //     <tr class="table_totaux__option__tva">
+  //       <td colspan="1" class="table_totaux__option__tva__text green td_padding first_column">TVA ${tva.taux} %</td>
+  //       <td class="table_totaux__option__tva__montant second_column">${tva.montant}</td>
+  //     </tr>
+  //     `;
+  //   });
+  //   tableaux_totaux += `
+  //   <tr class="table_totaux__option__total_ttc">
+  //     <td colspan="1" class="table_totaux__option__total_ttc__text green td_padding first_column">Total ttc (options)</td>
+  //     <td class="table_totaux__option__total_ttc__montant second_column yellow">${Data.totaux.option.montant_ttc}</td>
+  //   </tr>
+  //   </tbody>
+  //   </table>`;
+  // } else {
+  //   null;
+  // }
   // tableaux_totaux += `
   // <table class="table_date">
   // <colgroup>

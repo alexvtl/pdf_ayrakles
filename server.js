@@ -77,14 +77,16 @@ app.post("/generate-pdf/devis", async (req, res) => {
        </div>`,
 
       footerTemplate: `
-          <div style=" position:absolute; bottom:2.2cm; background-color:rgb(177, 120, 120);  width:18cm; margin:0; left: 50%;transform: translateX(-50%);
-        right: 50%;  display:flex; justify-content:space-between; align-items:center;">
-          <span style="-webkit-print-color-adjust: exact;color:rgb(168, 168, 168); max-width:65%;font-size:12px">${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – capital social ${data.capital_social} –
-            siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
-            ema<l : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
-          </span>
-          <span style="-webkit-print-color-adjust: exact; font-size:16px ;font-weight:bold ;color: #296b77" class="pageNumber"></span>
-          </div>
+          <footer style="width:100%; box-sizing:border-box; padding:0 1cm;">
+  <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+    <span style="-webkit-print-color-adjust:exact; color:#a8a8a8; max-width:70%; font-size:12px; text-align:left;">
+      ${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – capital social ${data.capital_social} –
+      siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
+      email : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
+    </span>
+    <span class="pageNumber" style="-webkit-print-color-adjust:exact; font-size:16px; font-weight:bold; color:#296b77;"></span>
+  </div>
+</footer>
         `,
       margin: { top: "80px", bottom: "4cm" },
     });

@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 4cm 2cm;
+  margin: 4cm 1cm;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
   display: flex;
   justify-content: space-between;
   @include center-horizontal;
-  @include size(22cm, auto);
+  @include size(19cm, auto);
   margin-bottom: 0px;
   &__left {
     @include flex-column;
@@ -76,7 +76,7 @@ body {
   @include flex-column;
   @include center-horizontal;
   gap: 0px;
-  width: 22cm;
+  width: 19cm;
   height: auto;
   font-size: 16px;
   div {
@@ -112,7 +112,7 @@ body {
 
 .ui-divider {
   height: 1px;
-  width: 22cm;
+  width: 19cm;
   background-color: #e5e7eb;
   margin: 24px auto;
 }
@@ -120,7 +120,7 @@ body {
 .section_table {
   @include flex-column;
   @include center-horizontal;
-  width: 22cm;
+  width: 19cm;
   margin: 0;
 }
 
@@ -261,10 +261,10 @@ body {
     @include text-bold;
   }
   &__bien_lieu {
-    font-size: 22px;
+    font-size: 19px;
   }
   &__type_projet {
-    font-size: 22px;
+    font-size: 19px;
   }
 }
 
@@ -472,7 +472,7 @@ body {
 
 .text_end {
   @include center-horizontal;
-  @include size(22cm, auto);
+  @include size(19cm, auto);
   margin-bottom: 30px;
   margin-top: 30px;
   font-size: 15px;
@@ -486,7 +486,7 @@ body {
   page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
   margin-bottom: 2cm; /* mb-8 (32px) */
   @include center-horizontal;
-  @include size(22cm, auto);
+  @include size(19cm, auto);
 }
 
 .totals-card {
@@ -535,7 +535,7 @@ body {
 .payment-conditions {
   margin-bottom: 2.5cm; /* mb-10 */
   @include center-horizontal;
-  @include size(22cm, auto);
+  @include size(19cm, auto);
   page-break-inside: avoid;
 }
 
