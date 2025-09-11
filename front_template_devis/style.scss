@@ -26,13 +26,14 @@ body {
 
     p {
       margin: 0 0 3px 0;
-      font-size: 20px;
+      font-size: 14px;
       padding: 0;
       color: black;
       font-family: variables.$font-family;
     }
     &__name-entreprise {
       @include text-bold;
+      font-size: 16px;
       text-align: left;
       color: black;
     }
@@ -79,19 +80,25 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  width: 22cm;
+  width: 16cm;
   div {
     display: flex;
     gap: 3px;
     align-items: center;
-    font-size: 22px;
+    font-size: 16px;
   }
 
   &__text_1,
   &__text_2 {
-    font-size: 22px;
+    font-size: 16px;
     color: black;
     font-family: variables.$font-family;
+  }
+  &__type_projet {
+    color: #4b5563;
+  }
+  &__bien_lieu {
+    color: #4b5563;
   }
 }
 
@@ -177,7 +184,7 @@ body {
 }
 
 .row-spacer-piece td {
-  height: 8px; // espace après chaque pièce (mb-2)
+  height: 4px; // espace après chaque pièce (mb-2)
   background: transparent;
   border: none;
 }
@@ -211,15 +218,15 @@ body {
     &__name {
       text-align: left;
       font-size: 14px;
-      @include text-bold(#666);
       border: none;
     }
     &__description {
-      font-size: 9px;
       text-align: left;
-      color: #afafaf;
       border: none;
       width: 8cm;
+      font-size: 12px; /* text-xs */
+      color: #6b7280; /* text-gray-500 */
+      font-style: italic;
     }
   }
 
@@ -227,7 +234,7 @@ body {
     @include td-padding;
     font-size: 14px;
     text-align: center;
-    @include text-bold(variables.$color-black);
+    @include text-bold(variables.$color-gray);
   }
   &__price_uht,
   &__quantity,
@@ -236,7 +243,7 @@ body {
     @include td-padding;
     text-align: center;
     font-size: 14px;
-    @include text-bold(#666);
+    color: #4b5563;
     white-space: nowrap;
     border: none;
   }
