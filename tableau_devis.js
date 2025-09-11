@@ -10,7 +10,7 @@ const renderTableaux = (Data) => {
     <col style="width: 3cm">
   </colgroup>
     <tr class="tableau_prestations__header">
-      <th class="tableau_prestations__header__libelle">Libellé</th>
+      <th class="tableau_prestations__header__libelle">Description</th>
       <th>Quantité</th>
       <th>Unité</th>
       <th>PU HT</th>

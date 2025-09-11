@@ -75,7 +75,7 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  gap: 0px;
+  gap: 10px;
   width: 19cm;
   height: auto;
   margin-top: 20px;
@@ -92,7 +92,6 @@ body {
     font-size: 16px;
     color: black;
     font-weight: 500;
-    margin-bottom: 10px;
   }
 
   p:nth-child(2) {
@@ -142,7 +141,7 @@ body {
     border: none;
 
     th {
-      text-align: center;
+      text-align: right;
       color: variables.$color-gray;
       font-size: 12px;
       border: none;
@@ -157,7 +156,9 @@ body {
     }
   }
 }
-
+#description {
+  text-align: left;
+}
 // .td_padding {
 //   padding: 3px 4px;
 //   vertical-align: middle;
@@ -183,7 +184,7 @@ body {
     background-color: transparent;
     width: 3cm;
     white-space: nowrap;
-    text-align: center;
+    text-align: right;
     @include text-bold(#0f172a);
     border: none;
     border-radius: 2px; // rounded-sm
@@ -216,7 +217,7 @@ body {
   }
   &__price {
     @include td-padding;
-    text-align: center;
+    text-align: right;
     font-size: 14px;
     font-weight: 500;
     color: #000000;
@@ -232,6 +233,7 @@ body {
       text-align: left;
       font-size: 14px;
       border: none;
+      color: #4b5563;
     }
     &__description {
       text-align: left;
@@ -246,7 +248,7 @@ body {
   &__price {
     @include td-padding;
     font-size: 14px;
-    text-align: center;
+    text-align: right;
     @include text-bold(variables.$color-gray);
   }
   &__price_uht,
@@ -254,7 +256,7 @@ body {
   &__unit,
   &__remise {
     @include td-padding;
-    text-align: center;
+    text-align: right;
     font-size: 14px;
     color: #4b5563;
     white-space: nowrap;
