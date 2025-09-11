@@ -287,6 +287,24 @@ const renderTableaux = (Data) => {
 
   tableaux += recap_card;
 
+  // Conditions de paiement (équivalent Tailwind demandé)
+  let conditions_block = `
+  <div class="payment-conditions">
+    <h3 class="payment-conditions__title">Conditions de paiement:</h3>
+    <div class="payment-conditions__grid">
+      ${Data.acompte
+        .map(
+          (ac) => `
+        <div class="payment-conditions__cell payment-conditions__cell--span-6">${ac.nom}</div>
+        <div class="payment-conditions__cell payment-conditions__cell--span-3 payment-conditions__cell--center">${ac.taux} %</div>
+        <div class="payment-conditions__cell payment-conditions__cell--span-3 payment-conditions__cell--right">${ac.montant} €</div>`
+        )
+        .join("")}
+    </div>
+  </div>`;
+
+  tableaux += conditions_block;
+
   return tableaux;
 };
 

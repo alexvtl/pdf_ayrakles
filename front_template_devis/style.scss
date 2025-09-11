@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 3cm, 0;
+  margin: 4cm, 0;
 }
 
 body {
@@ -82,11 +82,13 @@ body {
     gap: 3px;
     align-items: center;
     font-size: 16px;
+    margin: 0px;
   }
 
   &__text_1,
   &__text_2 {
     font-size: 16px;
+    margin: 0px;
     color: black;
     font-family: variables.$font-family;
   }
@@ -98,10 +100,6 @@ body {
     color: #4b5563;
     font-size: 16px;
   }
-}
-
-.logo {
-  height: 50px;
 }
 
 .ui-divider {
@@ -476,7 +474,8 @@ body {
 
 /* --- Totals Summary Card (équivalent Tailwind demandé) --- */
 .totals-summary {
-  margin-top: 2.5cm; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
+  margin-top: 2.5cm;
+  page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
   margin-bottom: 2cm; /* mb-8 (32px) */
   @include center-horizontal;
   @include size(22cm, auto);
@@ -522,4 +521,41 @@ body {
 .totals-card__cell--italic-gray {
   color: #6b7280; /* text-gray-500 */
   font-style: italic; /* italic */
+}
+
+/* --- Payment Conditions (grid 12 colonnes) --- */
+.payment-conditions {
+  margin-bottom: 2.5cm; /* mb-10 */
+  @include center-horizontal;
+  @include size(22cm, auto);
+  page-break-inside: avoid;
+}
+
+.payment-conditions__title {
+  font-weight: 500; /* font-medium */
+  margin-bottom: 12px; /* mb-3 */
+}
+
+.payment-conditions__grid {
+  display: grid; /* grid */
+  grid-template-columns: repeat(12, 1fr); /* grid-cols-12 */
+  font-size: 14px; /* text-sm */
+  row-gap: 8px; /* gap-y-2 */
+}
+
+.payment-conditions__cell {
+  padding: 0; /* pas de padding explicite côté Tailwind pour ce bloc */
+}
+
+.payment-conditions__cell--span-6 {
+  grid-column: span 6;
+}
+.payment-conditions__cell--span-3 {
+  grid-column: span 3;
+}
+.payment-conditions__cell--center {
+  text-align: center;
+}
+.payment-conditions__cell--right {
+  text-align: right;
 }
