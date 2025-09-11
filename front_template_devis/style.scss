@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 4cm 1cm;
+  margin: 3cm 1cm;
 }
 
 body {
@@ -78,6 +78,7 @@ body {
   gap: 0px;
   width: 19cm;
   height: auto;
+  margin-top: 20px;
   font-size: 16px;
   div {
     display: flex;
@@ -86,10 +87,18 @@ body {
     font-size: 16px;
     margin: 0px;
   }
-  p {
+  p:nth-child(1) {
     margin: 0px;
     font-size: 16px;
     color: black;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  p:nth-child(2) {
+    margin: 0px;
+    font-size: 16px;
+    color: #4b5563;
     font-weight: 500;
   }
 
