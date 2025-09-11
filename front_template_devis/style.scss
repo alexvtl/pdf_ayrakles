@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 2.5cm, 0, 4.5cm, 0;
+  margin: 3cm, 0;
 }
 
 body {
@@ -51,6 +51,7 @@ body {
       margin: 0 0 3px 0;
       padding: 0;
       text-align: end;
+      font-size: 16px;
     }
 
     &__client-name {
@@ -74,6 +75,7 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
+  gap: 10px;
   width: 22cm;
   div {
     display: flex;
@@ -90,9 +92,11 @@ body {
   }
   &__type_projet {
     color: #4b5563;
+    font-size: 16px;
   }
   &__bien_lieu {
     color: #4b5563;
+    font-size: 16px;
   }
 }
 
@@ -468,4 +472,54 @@ body {
   font-size: 15px;
   page-break-inside: avoid;
   font-style: italic;
+}
+
+/* --- Totals Summary Card (équivalent Tailwind demandé) --- */
+.totals-summary {
+  margin-top: 2.5cm; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
+  margin-bottom: 2cm; /* mb-8 (32px) */
+  @include center-horizontal;
+  @include size(22cm, auto);
+}
+
+.totals-card {
+  overflow: hidden; /* overflow-hidden */
+  border: 1px solid #f3f4f6; /* border-gray-100 */
+  border-radius: 4px; /* léger radius similaire aux Card */
+}
+
+.totals-card__grid {
+  display: grid; /* grid */
+  grid-template-columns: 1fr 1fr; /* grid-cols-2 */
+  font-size: 14px; /* text-sm */
+}
+
+.totals-card__cell {
+  padding: 12px; /* p-3 */
+}
+
+.totals-card__cell--blue {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: #ffffff; /* text-white */
+}
+
+.totals-card__cell--right {
+  text-align: right; /* text-right */
+}
+
+.totals-card__cell--medium {
+  font-weight: 500; /* font-medium */
+}
+
+.totals-card__cell--muted {
+  background-color: #f9fafb; /* bg-gray-50 */
+}
+
+.totals-card__cell--top-border {
+  border-top: 1px solid #f3f4f6; /* border-t border-gray-100 */
+}
+
+.totals-card__cell--italic-gray {
+  color: #6b7280; /* text-gray-500 */
+  font-style: italic; /* italic */
 }

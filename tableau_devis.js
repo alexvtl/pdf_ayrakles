@@ -253,6 +253,40 @@ const renderTableaux = (Data) => {
 
   tableaux += `<div class="table_totaux">${tableaux_totaux}</div>`;
 
+  // Bloc récapitulatif style "Card + Grid" (équivalent Tailwind)
+  let recap_card = `
+  <div class="totals-summary">
+    <div class="totals-card">
+      <div class="totals-card__grid">
+        <div class="totals-card__cell totals-card__cell--blue">Total HT (hors options)</div>
+        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+          Data.totaux.hors_option.montant_ht
+        } €</div>
+        ${Data.totaux.hors_option.tva
+          .map(
+            (tva) => `
+        <div class="totals-card__cell totals-card__cell--muted">TVA ${tva.taux} %</div>
+        <div class="totals-card__cell totals-card__cell--muted totals-card__cell--right">${tva.montant} €</div>`
+          )
+          .join("")}
+        <div class="totals-card__cell totals-card__cell--blue">Total TTC (hors options)</div>
+        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+          Data.totaux.hors_option.montant_ttc
+        } €</div>
+        <div class="totals-card__cell totals-card__cell--top-border">Délai de démarrage (semaines)</div>
+        <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right">${
+          Data.date_demarrage || ""
+        }</div>
+        <div class="totals-card__cell totals-card__cell--top-border">Durée des travaux estimée</div>
+        <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right totals-card__cell--italic-gray">${
+          Data.date_duree || "disponible (facultative)"
+        }</div>
+      </div>
+    </div>
+  </div>`;
+
+  tableaux += recap_card;
+
   return tableaux;
 };
 
