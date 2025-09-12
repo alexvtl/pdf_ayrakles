@@ -71,9 +71,9 @@ app.post("/generate-pdf/devis", async (req, res) => {
       format: "A4",
       printBackground: true,
       displayHeaderFooter: true,
-      headerTemplate: `<div style="width:100%; box-sizing:border-box;font-family: 'Inter', sans-serif;display:flex;margin:1cm  0cm 0cm 0cm; padding:0 1cm; display:flex; justify-content:space-between;">
-        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;font-weight: bold;">DEVIS</span>
-        <span style=" font-size: 12px; color: #296b77;font-weight: bold;">Devis n°${data.numero_devis}</span>
+      headerTemplate: `<div style="width:100%; box-sizing:border-box;font-family: 'Inter', sans-serif;display:flex;margin:0cm  0cm 0cm 0cm; padding:0 1cm; display:flex; justify-content:space-between;">
+        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;">DEVIS</span>
+        <span style=" font-size: 12px; color: #296b77;">Devis n°${data.numero_devis}</span>
        </div>`,
 
       footerTemplate: `

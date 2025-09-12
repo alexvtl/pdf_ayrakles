@@ -85,7 +85,7 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  gap: 10px;
+  gap: 5px;
   width: 19cm;
   height: auto;
   margin-top: 30px;
@@ -96,13 +96,13 @@ body {
     gap: 3px;
     align-items: center;
     font-size: 16px;
-    margin: 0px;
+    margin: 0px !important;
   }
 
   &__text_1,
   &__text_2 {
     font-size: 16px;
-    margin: 0px;
+    margin: 0px !important;
     color: black;
     font-family: variables.$font-family;
   }
