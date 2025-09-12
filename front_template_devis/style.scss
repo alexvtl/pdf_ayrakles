@@ -120,7 +120,7 @@ body {
 
 .ui-divider {
   height: 1px;
-  width: 19cm;
+  width: 8cm;
   background-color: #e5e7eb;
   margin: 24px auto;
 }
@@ -140,7 +140,7 @@ body {
     background-color: variables.$color-white;
     border: none;
 
-    th {
+    th:not(#description) {
       text-align: right;
       color: variables.$color-gray;
       font-size: 12px;
@@ -155,6 +155,13 @@ body {
       border: none;
     }
   }
+}
+.tableau_prestations__header_separator td {
+  height: 1px;
+  background-color: #000; /* noir */
+  border: none;
+  padding: 0;
+  margin: 3px 0;
 }
 #description {
   text-align: left;
@@ -174,6 +181,7 @@ body {
     color: #0f172a; // slate-900
     border: none;
     padding: 12px; // p-3
+    margin-top: 5px;
   }
   &__name {
     @include lot-name(#0f172a);
@@ -226,7 +234,7 @@ body {
 
 .section__prestation {
   page-break-inside: avoid;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   &__info {
     @include td-padding;
     &__name {
@@ -256,7 +264,7 @@ body {
   &__unit,
   &__remise {
     @include td-padding;
-    text-align: right;
+    text-align: right !important;
     font-size: 14px;
     color: #4b5563;
     white-space: nowrap;
@@ -494,6 +502,7 @@ body {
 /* --- Totals Summary Card (équivalent Tailwind demandé) --- */
 .totals-summary {
   margin-top: 2.5cm;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
   page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
   margin-bottom: 2cm; /* mb-8 (32px) */
   @include center-horizontal;
@@ -503,7 +512,7 @@ body {
 .totals-card {
   overflow: hidden; /* overflow-hidden */
   border: 1px solid #f3f4f6; /* border-gray-100 */
-  border-radius: 4px; /* léger radius similaire aux Card */
+  border-radius: 8px; /* léger radius similaire aux Card */
 }
 
 .totals-card__grid {
