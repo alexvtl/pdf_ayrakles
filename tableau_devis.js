@@ -296,8 +296,8 @@ const renderTableaux = (Data) => {
         ${
           Data.totaux?.option?.montant_ht
             ? `
-        <div class="totals-card__cell totals-card__cell--blue">Total HT (options)</div>
-        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+        <div class="totals-card__cell totals-card__cell--blue-light">Total HT (options)</div>
+        <div class="totals-card__cell totals-card__cell--blue-light totals-card__cell--right totals-card__cell--medium">${
           Data.totaux.option.montant_ht
         } €</div>
         ${Data.totaux.option.tva
@@ -307,8 +307,8 @@ const renderTableaux = (Data) => {
         <div class="totals-card__cell totals-card__cell--muted totals-card__cell--right">${tva.montant} €</div>`
           )
           .join("")}
-        <div class="totals-card__cell totals-card__cell--blue">Total TTC (options)</div>
-        <div class="totals-card__cell totals-card__cell--blue totals-card__cell--right totals-card__cell--medium">${
+        <div class="totals-card__cell totals-card__cell--blue-light">Total TTC (options)</div>
+        <div class="totals-card__cell totals-card__cell--blue-light totals-card__cell--right totals-card__cell--medium">${
           Data.totaux.option.montant_ttc
         } €</div>
         `
@@ -321,6 +321,10 @@ const renderTableaux = (Data) => {
         <div class="totals-card__cell totals-card__cell--top-border">Durée des travaux estimée</div>
         <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right totals-card__cell--italic-gray">${
           Data.date_duree || "disponible (facultative)"
+        }</div>
+        <div class="totals-card__cell totals-card__cell--top-border">Remarque</div>
+        <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right totals-card__cell--italic-gray">${
+          Data.remarque || ""
         }</div>
       </div>
     </div>

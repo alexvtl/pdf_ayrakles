@@ -28,6 +28,7 @@ body {
 .section_header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @include center-horizontal;
   @include size(19cm, auto);
   margin-bottom: 0px;
@@ -131,7 +132,7 @@ body {
   height: 1px;
   width: 8cm;
   background-color: #e5e7eb;
-  margin: 24px auto;
+  margin: 24px auto 64px auto;
 }
 
 .section_table {
@@ -543,6 +544,11 @@ body {
 .totals-card__cell--blue {
   background-color: #2563eb; /* bg-blue-600 */
   color: #ffffff; /* text-white */
+}
+
+.totals-card__cell--blue-light {
+  background-color: #dbeafe; /* bg-blue-100 */
+  color: #1e40af; /* text-blue-800 */
 }
 
 .totals-card__cell--right {
