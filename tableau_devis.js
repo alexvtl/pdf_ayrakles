@@ -10,13 +10,15 @@ const renderTableaux = (Data) => {
     <col style="width: 3cm">
   </colgroup>
     <tr class="tableau_prestations__header">
-      <th class="tableau_prestations__header__libelle">Description</th>
+      <th class="tableau_prestations__header__libelle id="description">Description</th>
       <th>Quantité</th>
       <th>Unité</th>
       <th>PU HT</th>
       <th>TVA</th>
       <th class="bold tableau_prestations__header__total">Total HT</th>
-    </tr>`;
+    </tr>
+    <tr class="tableau_prestations__header_separator"><td colspan="6"></td></tr>
+    `;
 
   Data.lots.forEach((lot) => {
     let html = `
