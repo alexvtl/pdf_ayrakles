@@ -89,7 +89,7 @@ body {
   width: 19cm;
   height: auto;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px !important;
   font-size: 16px;
   div {
     display: flex;
@@ -191,14 +191,16 @@ body {
   border: none;
 
   td {
-    font-size: 20px;
+    font-size: 18px;
     color: #0f172a; // slate-900
     border: none;
     padding: 12px; // p-3
     margin-top: 5px;
   }
   &__name {
-    @include lot-name(#0f172a);
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 600;
     border-radius: 2px; // rounded-sm
     background-color: transparent;
   }
@@ -207,7 +209,8 @@ body {
     width: 3cm;
     white-space: nowrap;
     text-align: right;
-    @include text-bold(#0f172a);
+    font-weight: 600;
+    color: #0f172a;
     border: none;
     border-radius: 2px; // rounded-sm
   }
@@ -516,7 +519,7 @@ body {
   margin-top: 2.5cm;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
   page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
-  margin-bottom: 2cm; /* mb-8 (32px) */
+  margin-bottom: 1cm; /* mb-8 (32px) */
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #f3f4f6; /* border-gray-100 */
@@ -566,7 +569,7 @@ body {
 
 /* --- Payment Conditions (grid 12 colonnes) --- */
 .payment-conditions {
-  margin-bottom: 2.5cm; /* mb-10 */
+  margin-bottom: 1.5cm; /* mb-10 */
   @include center-horizontal;
   @include size(19cm, auto);
   page-break-inside: avoid;
@@ -574,6 +577,7 @@ body {
 
 .payment-conditions__title {
   font-weight: 500; /* font-medium */
+  font-size: 16px;
   margin-bottom: 12px; /* mb-3 */
 }
 
