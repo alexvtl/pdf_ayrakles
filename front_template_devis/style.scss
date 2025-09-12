@@ -79,6 +79,7 @@ body {
   width: 19cm;
   height: auto;
   margin-top: 30px;
+  margin-bottom: 15px;
   font-size: 16px;
   div {
     display: flex;
@@ -260,6 +261,7 @@ body {
     font-size: 14px;
     text-align: right;
     color: #39414c;
+    vertical-align: top !important;
   }
   &__price_uht,
   &__quantity,
@@ -268,26 +270,12 @@ body {
     @include td-padding;
     text-align: right !important;
     font-size: 14px;
+    vertical-align: top !important;
     color: #4b5563;
     white-space: nowrap;
     border: none;
     padding: 0;
     margin: 0;
-  }
-}
-
-.section_info-projet {
-  &__text_1 {
-    @include text-bold;
-  }
-  &__text_2 {
-    @include text-bold;
-  }
-  &__bien_lieu {
-    font-size: 19px;
-  }
-  &__type_projet {
-    font-size: 19px;
   }
 }
 

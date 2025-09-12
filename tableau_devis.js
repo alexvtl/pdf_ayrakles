@@ -17,8 +17,8 @@ const renderTableaux = (Data) => {
   </colgroup>
     <tr class="tableau_prestations__header">
       <th id="description" class="tableau_prestations__header__libelle">Description</th>
-      <th>Quantité</th>
-      <th>Unité</th>
+      <th>Qté</th>
+      <th>U</th>
       <th>PU HT</th>
       <th>TVA</th>
       <th class="bold tableau_prestations__header__total">Total HT</th>
@@ -32,8 +32,8 @@ const renderTableaux = (Data) => {
     let html = `
      <tr class="row-spacer-piece"><td colspan="6"></td></tr>
      <tr class="section__lot">
-      <td colspan="5" class="section__lot__name td_padding">${lot.name}</td>
-      <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
+      <td colspan="4" class="section__lot__name td_padding">${lot.name}</td>
+      <td colspan="2" class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr>
      <tr class="row-spacer"><td colspan="6"></td></tr>
     `;
@@ -41,8 +41,8 @@ const renderTableaux = (Data) => {
     lot.pieces.forEach((piece) => {
       html += `
     <tr class="section__piece">
-      <td colspan="5" class="section__piece__name">${piece.name}</td>
-      <td class="section__piece__price">${piece.pieces_sum}</td>
+      <td colspan="4" class="section__piece__name">${piece.name}</td>
+      <td colspan="2" class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
       `;
