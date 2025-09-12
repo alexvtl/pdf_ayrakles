@@ -1,13 +1,19 @@
 const renderTableaux = (Data) => {
+  // <col style="width: 9cm">
+  // <col style="width: 2cm">
+  // <col style="width: 1cm">
+  // <col style="width: 2.5cm">
+  // <col style="width: 0.5cm">
+  // <col style="width: 3cm">
   let tableaux = `
  <table class="tableau_prestations">
  <colgroup>
-    <col style="width: 9cm">
-    <col style="width: 2cm">
-    <col style="width: 1cm">
-    <col style="width: 2.5cm">
-    <col style="width: 0.5cm">
-    <col style="width: 3cm">
+  <col style="width:auto">     <!-- Description -->
+  <col style="width:6ch">      <!-- Quantité -->
+  <col style="width:5ch">      <!-- Unité -->
+  <col style="width:10ch">     <!-- PU HT -->
+  <col style="width:6ch">      <!-- TVA -->
+  <col style="width:12ch">   
   </colgroup>
     <tr class="tableau_prestations__header">
       <th id="description" class="tableau_prestations__header__libelle">Description</th>
@@ -66,6 +72,7 @@ const renderTableaux = (Data) => {
               presta.ptht
             }</td>
           </tr>
+          <tr class="row-spacer"><td colspan="6"></td></tr>
         `;
       });
     });

@@ -78,7 +78,7 @@ body {
   gap: 10px;
   width: 19cm;
   height: auto;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 16px;
   div {
     display: flex;
@@ -134,6 +134,7 @@ body {
 
 .tableau_prestations {
   width: 100%;
+  table-layout: fixed;
   @include table-base-no-border;
 
   &__header {
@@ -235,6 +236,7 @@ body {
 .section__prestation {
   page-break-inside: avoid;
   margin-bottom: 2px;
+
   &__info {
     @include td-padding;
     &__name {
@@ -246,7 +248,7 @@ body {
     &__description {
       text-align: left;
       border: none;
-      width: 8cm;
+      width: 9cm;
       font-size: 12px; /* text-xs */
       color: #6b7280; /* text-gray-500 */
       font-style: italic;
@@ -269,6 +271,8 @@ body {
     color: #4b5563;
     white-space: nowrap;
     border: none;
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -506,6 +510,7 @@ body {
   page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
   margin-bottom: 2cm; /* mb-8 (32px) */
   border-radius: 10px;
+  overflow: hidden;
   border: 1px solid #f3f4f6; /* border-gray-100 */
   @include center-horizontal;
   @include size(19cm, auto);
