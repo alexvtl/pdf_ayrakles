@@ -32,8 +32,8 @@ const renderTableaux = (Data) => {
     let html = `
      <tr class="row-spacer-piece"><td colspan="6"></td></tr>
      <tr class="section__lot">
-      <td colspan="4" class="section__lot__name td_padding">${lot.name}</td>
-      <td colspan="2" class="section__lot__total td_padding total">${lot.lots_sum}</td>
+      <td colspan="3" class="section__lot__name td_padding">${lot.name}</td>
+      <td colspan="3" class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr>
      <tr class="row-spacer"><td colspan="6"></td></tr>
     `;
@@ -41,8 +41,8 @@ const renderTableaux = (Data) => {
     lot.pieces.forEach((piece) => {
       html += `
     <tr class="section__piece">
-      <td colspan="4" class="section__piece__name">${piece.name}</td>
-      <td colspan="2" class="section__piece__price">${piece.pieces_sum}</td>
+      <td colspan="3" class="section__piece__name">${piece.name}</td>
+      <td colspan="3" class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
       `;
@@ -84,8 +84,8 @@ const renderTableaux = (Data) => {
       let html_option = `
        <tr class="row-spacer-piece"><td colspan="6"></td></tr>
      <tr class="section__lot">
-      <td colspan="5" class="section__lot__name td_padding">${lot.name} (Option)</td>
-      <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
+      <td colspan="3" class="section__lot__name td_padding">${lot.name} (Option)</td>
+      <td colspan="3" class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr> 
      <tr class="row-spacer"><td colspan="6"></td></tr>
     `;
@@ -93,8 +93,8 @@ const renderTableaux = (Data) => {
       lot.pieces.forEach((piece) => {
         html_option += `
     <tr class="section__piece">
-      <td colspan="5" class="section__piece__name">${piece.name} (Option)</td>
-      <td class="section__piece__price">${piece.pieces_sum}</td>
+      <td colspan="3" class="section__piece__name">${piece.name} (Option)</td>
+      <td colspan="3" class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
      <tr class="row-spacer-piece"><td colspan="6"></td></tr>
       `;

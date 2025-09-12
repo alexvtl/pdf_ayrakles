@@ -14,6 +14,16 @@ body {
   padding: 0;
   color: variables.$color-text;
 }
+.section_header,
+.section_info-projet,
+.section_table,
+.totals-summary,
+.payment-conditions,
+.text_end {
+  width: 19cm !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 .section_header {
   display: flex;
@@ -79,7 +89,7 @@ body {
   width: 19cm;
   height: auto;
   margin-top: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   font-size: 16px;
   div {
     display: flex;
@@ -155,6 +165,8 @@ body {
     }
     &__libelle {
       border: none;
+      color: variables.$color-gray;
+      font-size: 12px;
     }
   }
 }
@@ -237,14 +249,20 @@ body {
 .section__prestation {
   page-break-inside: avoid;
   margin-bottom: 2px;
+  margin-top: 2px;
 
   &__info {
     @include td-padding;
+    padding: 0;
+    margin: 0;
+    vertical-align: top !important;
     &__name {
       text-align: left;
       font-size: 14px;
       border: none;
       color: #4b5563;
+      padding: 0;
+      margin: 0;
     }
     &__description {
       text-align: left;
@@ -262,6 +280,8 @@ body {
     text-align: right;
     color: #39414c;
     vertical-align: top !important;
+    padding: 0;
+    margin: 0;
   }
   &__price_uht,
   &__quantity,

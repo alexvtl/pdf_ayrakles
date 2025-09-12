@@ -71,13 +71,13 @@ app.post("/generate-pdf/devis", async (req, res) => {
       format: "A4",
       printBackground: true,
       displayHeaderFooter: true,
-      headerTemplate: `<div style=" font-family: 'Inter', sans-serif; position:absolute; top:1cm; left:1cm; width:19cm; margin:0cm  0cm 0cm 0cm; display:flex; justify-content:space-between;">
+      headerTemplate: `<div style=" font-family: 'Inter', sans-serif; position:absolute; top:1cm; left:1cm; width:19cm; margin:0cm  0cm 0cm 0cm; padding:0 1cm; display:flex; justify-content:space-between;">
         <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;font-weight: bold;">DEVIS</span>
         <span style=" font-size: 12px; color: #296b77;font-weight: bold;">Devis n°${data.numero_devis}</span>
        </div>`,
 
       footerTemplate: `
-          <footer style="width:100%; box-sizing:border-box; padding:0 1cm;">
+          <footer style="width:100%; padding:0 1cm; box-sizing:border-box;">
   <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
     <span style="-webkit-print-color-adjust:exact; color:#a8a8a8; max-width:70%; font-size:12px; text-align:left;">
       ${data.nom_entreprise}, ${data.adresse_entreprise} – ${data.forme_juridique} – capital social ${data.capital_social} –
@@ -88,7 +88,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
   </div>
 </footer>
         `,
-      margin: { top: "80px", bottom: "4cm" },
+      margin: { top: "80px", bottom: "4cm", left: "1cm", right: "1cm" },
     });
 
     res.set({
