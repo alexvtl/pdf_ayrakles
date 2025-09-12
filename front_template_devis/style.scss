@@ -257,7 +257,7 @@ body {
     @include td-padding;
     font-size: 14px;
     text-align: right;
-    @include text-bold(variables.$color-gray);
+    color: #39414c;
   }
   &__price_uht,
   &__quantity,
@@ -505,14 +505,14 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
   page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
   margin-bottom: 2cm; /* mb-8 (32px) */
+  border-radius: 10px;
+  border: 1px solid #f3f4f6; /* border-gray-100 */
   @include center-horizontal;
   @include size(19cm, auto);
 }
 
 .totals-card {
   overflow: hidden; /* overflow-hidden */
-  border: 1px solid #f3f4f6; /* border-gray-100 */
-  border-radius: 8px; /* léger radius similaire aux Card */
 }
 
 .totals-card__grid {

@@ -10,18 +10,21 @@ const renderTableaux = (Data) => {
     <col style="width: 3cm">
   </colgroup>
     <tr class="tableau_prestations__header">
-      <th class="tableau_prestations__header__libelle id="description">Description</th>
+      <th id="description" class="tableau_prestations__header__libelle">Description</th>
       <th>Quantité</th>
       <th>Unité</th>
       <th>PU HT</th>
       <th>TVA</th>
       <th class="bold tableau_prestations__header__total">Total HT</th>
     </tr>
+     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
     <tr class="tableau_prestations__header_separator"><td colspan="6"></td></tr>
+     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
     `;
 
   Data.lots.forEach((lot) => {
     let html = `
+     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
      <tr class="section__lot">
       <td colspan="5" class="section__lot__name td_padding">${lot.name}</td>
       <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
@@ -72,10 +75,12 @@ const renderTableaux = (Data) => {
   if (Data.lots_option.length > 0) {
     Data.lots_option.forEach((lot) => {
       let html_option = `
+       <tr class="row-spacer-piece"><td colspan="6"></td></tr>
      <tr class="section__lot">
       <td colspan="5" class="section__lot__name td_padding">${lot.name} (Option)</td>
       <td class="section__lot__total td_padding total">${lot.lots_sum}</td>
     </tr> 
+     <tr class="row-spacer"><td colspan="6"></td></tr>
     `;
 
       lot.pieces.forEach((piece) => {
@@ -84,6 +89,7 @@ const renderTableaux = (Data) => {
       <td colspan="5" class="section__piece__name">${piece.name} (Option)</td>
       <td class="section__piece__price">${piece.pieces_sum}</td>
     </tr>
+     <tr class="row-spacer-piece"><td colspan="6"></td></tr>
       `;
 
         piece.prestations.forEach((presta) => {
