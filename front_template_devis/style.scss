@@ -97,6 +97,15 @@ body {
     align-items: center;
     font-size: 16px;
     margin: 0px !important;
+    padding: 0px !important;
+  }
+  p:nth-child(1) {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  p:nth-child(2) {
+    margin: 0px !important;
+    padding: 0px !important;
   }
 
   &__text_1,
