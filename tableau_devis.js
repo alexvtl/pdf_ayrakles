@@ -50,6 +50,7 @@ const renderTableaux = (Data) => {
       piece.prestations.forEach((presta) => {
         html += `
         <tr class="row-spacer"><td colspan="6"></td></tr>
+        <tr class="row-spacer"><td colspan="6"></td></tr>
           <tr class="section__prestation">
             <td colspan="1" class="section__prestation__info td_padding">
               <div class="section__prestation__info__name">${presta.name}</div>
@@ -102,6 +103,8 @@ const renderTableaux = (Data) => {
 
         piece.prestations.forEach((presta) => {
           html_option += `
+          <tr class="row-spacer"><td colspan="6"></td></tr>
+          <tr class="row-spacer"><td colspan="6"></td></tr>
           <tr class="section__prestation">
             <td colspan="1" class="section__prestation__info td_padding">
               <div class="section__prestation__info__name">${presta.name}</div>
@@ -125,6 +128,7 @@ const renderTableaux = (Data) => {
               presta.ptht
             }</td>
           </tr>
+          <tr class="row-spacer"><td colspan="6"></td></tr>
         `;
         });
       });

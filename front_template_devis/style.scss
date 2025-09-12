@@ -256,7 +256,7 @@ body {
 
   &__info {
     @include td-padding;
-    padding: 0;
+    padding: 0 0 0 5px;
     margin: 0;
     vertical-align: top !important;
     &__name {
@@ -264,12 +264,13 @@ body {
       font-size: 14px;
       border: none;
       color: #4b5563;
-      padding: 0;
+      padding: 0 0 0 2px;
       margin: 0;
     }
     &__description {
       text-align: left;
       border: none;
+
       width: 9cm;
       font-size: 12px; /* text-xs */
       color: #6b7280; /* text-gray-500 */
