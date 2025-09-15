@@ -570,6 +570,9 @@ body {
 .totals-card__cell--italic-gray {
   color: #6b7280; /* text-gray-500 */
   font-style: italic; /* italic */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* --- Payment Conditions (grid 12 colonnes) --- */

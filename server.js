@@ -16,6 +16,10 @@ const { log } = require("console");
 
 app.use(express.json());
 
+// Puppeteer browser global (réutilisé) pour la route devis
+const launchArgs = ["--no-sandbox", "--disable-dev-shm-usage"];
+let browserPromise = puppeteer.launch({ headless: "new", args: launchArgs });
+
 app.get("/pdf/:uuid", (req, res) => {
   const uuid = req.params.uuid;
   const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
@@ -30,9 +34,11 @@ app.get("/pdf/:uuid", (req, res) => {
 });
 
 app.post("/generate-pdf/devis", async (req, res) => {
+  const t0 = Date.now();
   const data = req.body || [];
   // créer tableaux
   const table = renderTableaux(data);
+  const t_table = Date.now();
   // créer image logo
   const imageslogo = `<img style="object-fit: cover;height: 3cm;max-width:6cm; margin-bottom: 10px;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
   // 📁 Lire le HTML brut
@@ -45,6 +51,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // 🎨 Lire et injecter le CSS dans un <style>
   const cssPath = path.join(__dirname, "./front_template_devis/style.css");
   const css = fs.readFileSync(cssPath, "utf-8");
+  const t_assets = Date.now();
 
   // 🖼️ Remplacer {{table}} par le tableau HTML
   const htmlPage = html
@@ -60,13 +67,27 @@ app.post("/generate-pdf/devis", async (req, res) => {
     .replace("{{bien_lieu}}", data.bien_lieu)
     .replace("{{table}}", table)
     .replace("{{imagelogo}}", imageslogo);
+  const t_htmlBuilt = Date.now();
 
   try {
-    const browser = await puppeteer.launch();
+    const t_launch0 = Date.now();
+    const browser = await browserPromise;
+    const t_launch1 = Date.now();
 
     const page = await browser.newPage();
+    await page.setJavaScriptEnabled(false);
+    await page.setViewport({ width: 800, height: 600, deviceScaleFactor: 1 });
+    // Bloquer toute requête externe (fonts/images/scripts inattendus)
+    await page.route("**/*", (route) => {
+      if (route.request().resourceType() === "document")
+        return route.continue();
+      return route.abort();
+    });
 
-    await page.setContent(htmlPage, { waitUntil: "networkidle0" });
+    const t_setContent0 = Date.now();
+    await page.setContent(htmlPage, { waitUntil: "domcontentloaded" });
+    const t_setContent1 = Date.now();
+    const t_pdf0 = Date.now();
     const pdfbuffer = await page.pdf({
       format: "A4",
       printBackground: true,
@@ -90,15 +111,24 @@ app.post("/generate-pdf/devis", async (req, res) => {
         `,
       margin: { top: "80px", bottom: "4cm", left: "1cm", right: "1cm" },
     });
+    const t_pdf1 = Date.now();
 
     res.set({
       "Content-Type": "application/pdf",
     });
-    console.log(` Pdf genéré par : ${data.user_id} pdf_id : ${uuid}`);
+    console.log(
+      `devis timings user=${data.user_id} pdf_id=${uuid} | ` +
+        `buildTable=${t_table - t0}ms assets=${
+          t_assets - t_table
+        }ms htmlBuild=${t_htmlBuilt - t_assets}ms ` +
+        `launch=${t_launch1 - t_launch0}ms setContent=${
+          t_setContent1 - t_setContent0
+        }ms pdf=${t_pdf1 - t_pdf0}ms total=${t_pdf1 - t0}ms`
+    );
 
     res.end(pdfbuffer);
 
-    await browser.close();
+    await page.close();
   } catch (err) {
     console.error("Erreur PDF :", err);
     res.status(500).send("Erreur lors de la génération du PDF");
