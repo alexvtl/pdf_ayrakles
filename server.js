@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 3000;
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
-const { log } = require("console");
 
 app.use(express.json());
 
@@ -78,10 +77,10 @@ app.post("/generate-pdf/devis", async (req, res) => {
     await page.setJavaScriptEnabled(false);
     await page.setViewport({ width: 800, height: 600, deviceScaleFactor: 1 });
     // Bloquer toute requête externe (fonts/images/scripts inattendus)
-    await page.route("**/*", (route) => {
-      if (route.request().resourceType() === "document")
-        return route.continue();
-      return route.abort();
+    await page.setRequestInterception(true);
+    page.on("request", (request) => {
+      if (request.resourceType() === "document") return request.continue();
+      return request.abort();
     });
 
     const t_setContent0 = Date.now();
