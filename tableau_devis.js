@@ -314,14 +314,25 @@ const renderTableaux = (Data) => {
         `
             : ""
         }
-        <div class="totals-card__cell totals-card__cell--top-border">Délai de démarrage (semaines)</div>
+        ${
+          Data.date_demarrage
+            ? `
+        <div class="totals-card__cell totals-card__cell--top-border">Délai de démarrage</div>
         <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right">${
           Data.date_demarrage || ""
         }</div>
+        `
+            : ""
+        }
+        ${
+          Data.date_duree
+            ? `
         <div class="totals-card__cell totals-card__cell--top-border">Durée des travaux estimée</div>
         <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right totals-card__cell--italic-gray">${
-          Data.date_duree || "disponible (facultative)"
-        }</div>
+          Data.date_duree || ""
+        }</div> `
+            : ""
+        }
         ${
           Data.remarque
             ? `

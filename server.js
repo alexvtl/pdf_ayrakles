@@ -15,8 +15,8 @@ const { v4: uuidv4 } = require("uuid");
 
 app.use(express.json());
 
-// Endpoint de healthcheck pour monitoring (UptimeRobot)
 app.get("/health", (req, res) => {
+  console.log("Healthcheck");
   res.status(200).send("OK");
 });
 
@@ -43,8 +43,11 @@ app.post("/generate-pdf/devis", async (req, res) => {
   // créer tableaux
   const table = renderTableaux(data);
   const t_table = Date.now();
-  // créer image logo
-  const imageslogo = `<img style="object-fit: cover;height: 3cm;max-width:6cm; margin-bottom: 10px;" src="data:image/${data.logo_type};base64,${data.logo}" />`;
+  // créer image logo (optionnelle)
+  const imageslogo =
+    data && data.logo && data.logo_type
+      ? `<img style="object-fit: cover;height: 3cm;max-width:6cm; margin-bottom: 10px;" src="data:image/${data.logo_type};base64,${data.logo}" />`
+      : "";
   // 📁 Lire le HTML brut
   const htmlPath = path.join(__dirname, "./front_template_devis/index.html");
   let html = fs.readFileSync(htmlPath, "utf-8");
