@@ -15,6 +15,11 @@ const { v4: uuidv4 } = require("uuid");
 
 app.use(express.json());
 
+// Endpoint de healthcheck pour monitoring (UptimeRobot)
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Puppeteer browser global (réutilisé) pour la route devis
 const launchArgs = ["--no-sandbox", "--disable-dev-shm-usage"];
 let browserPromise = puppeteer.launch({ headless: "new", args: launchArgs });
