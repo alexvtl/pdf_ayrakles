@@ -4,7 +4,7 @@
 @page {
   size: A4;
   -webkit-print-color-adjust: exact;
-  margin: 4.5cm 0;
+  margin: 3cm 1cm;
 }
 
 body {
@@ -14,27 +14,58 @@ body {
   padding: 0;
   color: variables.$color-text;
 }
+.section_header,
+.section_info-projet,
+.section_table,
+.totals-summary,
+.payment-conditions,
+.text_end {
+  width: 19cm !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 .section_header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @include center-horizontal;
-  @include size(18cm, 4cm);
-  margin-bottom: 30px;
+  @include size(19cm, auto);
+  margin-bottom: 0px;
+  &__left {
+    @include flex-column;
+
+    p {
+      margin: 0 0 3px 0;
+      font-size: 14px;
+      padding: 0;
+      font-family: variables.$font-family;
+    }
+    &__name-entreprise {
+      text-align: left;
+      color: black;
+    }
+    &__adresse-entreprise {
+      text-align: left;
+      color: #4b5563;
+    }
+    &__telephone-entreprise {
+      text-align: left;
+      color: #4b5563;
+    }
+  }
 
   &__right {
     @include flex-column(flex-end);
 
     p {
       margin: 0 0 3px 0;
-      font-size: 20px;
       padding: 0;
       text-align: end;
-      color: black;
+      font-size: 16px;
     }
 
     &__client-name {
-      @include text-bold;
       text-align: end;
       color: black;
     }
@@ -42,12 +73,12 @@ body {
     &__client-adresse-2 {
       white-space: nowrap;
       text-align: end;
-      color: black;
+      color: #4b5563;
     }
     &__date {
       text-align: end;
       margin-top: 20px !important;
-      color: black;
+      color: #4b5563;
     }
   }
 }
@@ -55,51 +86,73 @@ body {
 .section_info-projet {
   @include flex-column;
   @include center-horizontal;
-  width: 16.5cm;
-
+  gap: 5px;
+  width: 19cm;
+  height: auto;
+  margin-top: 30px;
+  margin-bottom: 40px !important;
+  font-size: 16px;
   div {
     display: flex;
-    gap: 10px;
+    gap: 3px;
     align-items: center;
-    font-size: 22px;
+    font-size: 16px;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  p:nth-child(1) {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  p:nth-child(2) {
+    margin: 0px !important;
+    padding: 0px !important;
   }
 
   &__text_1,
   &__text_2 {
-    font-size: 22px;
+    font-size: 16px;
+    margin: 0px !important;
     color: black;
+    font-family: variables.$font-family;
   }
-
-  &__text_2::before {
-    content: "      ";
-    height: 20px;
-    background-color: variables.$color-yellow;
-    width: 100%;
-    margin-top: -1em;
+  &__type_projet {
+    color: #363d48;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &__bien_lieu {
+    color: #363d48;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 
-.logo {
-  height: 60px;
+.ui-divider {
+  height: 1px;
+  width: 8cm;
+  background-color: #e5e7eb;
+  margin: 24px auto 40px auto;
 }
 
 .section_table {
   @include flex-column;
   @include center-horizontal;
-  width: 22cm;
+  width: 19cm;
   margin: 0;
 }
 
 .tableau_prestations {
   width: 100%;
+  table-layout: fixed;
   @include table-base-no-border;
 
   &__header {
     background-color: variables.$color-white;
     border: none;
 
-    th {
-      text-align: center;
+    th:not(#description) {
+      text-align: right;
       color: variables.$color-gray;
       font-size: 12px;
       border: none;
@@ -111,10 +164,21 @@ body {
     }
     &__libelle {
       border: none;
+      color: variables.$color-gray;
+      font-size: 12px;
     }
   }
 }
-
+.tableau_prestations__header_separator td {
+  height: 1px;
+  background-color: #000; /* noir */
+  border: none;
+  padding: 0;
+  margin: 3px 0;
+}
+#description {
+  text-align: left;
+}
 // .td_padding {
 //   padding: 3px 4px;
 //   vertical-align: middle;
@@ -122,96 +186,119 @@ body {
 // }
 
 .section__lot {
-  background-color: variables.$color-green;
+  background-color: #eff6ff; // bg-blue-50
   border: none;
 
   td {
-    font-size: 22px;
-    color: variables.$color-white;
+    font-size: 18px;
+    color: #0f172a; // slate-900
     border: none;
+    padding: 12px; // p-3
+    margin-top: 5px;
   }
   &__name {
-    @include td-padding;
-    @include lot-name(variables.$color-white);
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 2px; // rounded-sm
+    background-color: transparent;
   }
   &__total {
-    background-color: variables.$color-green;
+    background-color: transparent;
     width: 3cm;
     white-space: nowrap;
-    @include td-padding;
-    text-align: center;
-    @include text-bold(variables.$color-white);
+    text-align: right;
+    font-weight: 600;
+    color: #0f172a;
     border: none;
+    border-radius: 2px; // rounded-sm
   }
+}
+
+.row-spacer td {
+  height: 4px;
+  background: transparent;
+  border: none;
+}
+
+.row-spacer-piece td {
+  height: 4px; // espace après chaque pièce (mb-2)
+  background: transparent;
+  border: none;
 }
 
 .section__piece {
   td {
-    @include td-padding;
-    font-size: 18px;
-    @include text-bold(variables.$color-white);
+    @include td-padding; // base padding
+    padding: 8px; // p-2
+    font-size: 14px; // text-sm
+    font-weight: 500; // font-medium
+    color: #000000; // noir
     white-space: nowrap;
-    background-color: variables.$color-yellow;
+    background-color: #f5f5f5; // bg-gray-100
     border: none;
+    border-radius: 2px;
   }
   &__price {
     @include td-padding;
-    text-align: center;
-    font-size: 18px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
   }
 }
 
 .section__prestation {
   page-break-inside: avoid;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+
   &__info {
     @include td-padding;
+    padding: 0 0 0 5px;
+    margin: 0;
+    vertical-align: top !important;
     &__name {
       text-align: left;
       font-size: 14px;
-      @include text-bold(#666);
       border: none;
+      color: #4b5563;
+      padding: 0 0 0 2px;
+      margin: 0;
     }
     &__description {
-      font-size: 9px;
       text-align: left;
-      color: #afafaf;
       border: none;
-      width: 8cm;
+
+      width: 9cm;
+      font-size: 12px; /* text-xs */
+      color: #6b7280; /* text-gray-500 */
+      font-style: italic;
     }
   }
 
   &__price {
     @include td-padding;
     font-size: 14px;
-    text-align: center;
-    @include text-bold(variables.$color-black);
+    text-align: right;
+    color: #39414c;
+    vertical-align: top !important;
+    padding: 0;
+    margin: 0;
   }
   &__price_uht,
   &__quantity,
   &__unit,
   &__remise {
     @include td-padding;
-    text-align: center;
+    text-align: right !important;
     font-size: 14px;
-    @include text-bold(#666);
+    vertical-align: top !important;
+    color: #4b5563;
     white-space: nowrap;
     border: none;
-  }
-}
-
-.section_info-projet {
-  &__text_1 {
-    @include text-bold;
-  }
-  &__text_2 {
-    @include text-bold;
-  }
-  &__bien_lieu {
-    font-size: 22px;
-  }
-  &__type_projet {
-    font-size: 22px;
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -231,7 +318,6 @@ body {
     width: fit-content;
     border: none;
     align-self: flex-end;
-    min-width: 100%;
     border-collapse: collapse;
     padding: 0px;
     transform: translateX(3cm);
@@ -420,10 +506,109 @@ body {
 
 .text_end {
   @include center-horizontal;
-  @include size(18cm, auto);
+  @include size(19cm, auto);
   margin-bottom: 30px;
   margin-top: 30px;
   font-size: 15px;
   page-break-inside: avoid;
   font-style: italic;
+}
+
+/* --- Totals Summary Card (équivalent Tailwind demandé) --- */
+.totals-summary {
+  margin-top: 2.5cm;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  page-break-inside: avoid; /* mt-10 (approx 40px) → 2.5cm pour cohérence pdf */
+  margin-bottom: 1cm; /* mb-8 (32px) */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #f3f4f6; /* border-gray-100 */
+  @include center-horizontal;
+  @include size(19cm, auto);
+}
+
+.totals-card {
+  overflow: hidden; /* overflow-hidden */
+}
+
+.totals-card__grid {
+  display: grid; /* grid */
+  grid-template-columns: 1fr 1fr; /* grid-cols-2 */
+  font-size: 14px; /* text-sm */
+}
+
+.totals-card__cell {
+  padding: 12px; /* p-3 */
+}
+
+.totals-card__cell--blue {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: #ffffff; /* text-white */
+}
+
+.totals-card__cell--blue-light {
+  background-color: #dbeafe; /* bg-blue-100 */
+  color: #1e40af; /* text-blue-800 */
+}
+
+.totals-card__cell--right {
+  text-align: right; /* text-right */
+}
+
+.totals-card__cell--medium {
+  font-weight: 500; /* font-medium */
+}
+
+.totals-card__cell--muted {
+  background-color: #f9fafb; /* bg-gray-50 */
+}
+
+.totals-card__cell--top-border {
+  border-top: 1px solid #f3f4f6; /* border-t border-gray-100 */
+}
+
+.totals-card__cell--italic-gray {
+  color: #6b7280; /* text-gray-500 */
+  font-style: italic; /* italic */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* --- Payment Conditions (grid 12 colonnes) --- */
+.payment-conditions {
+  margin-bottom: 1.5cm; /* mb-10 */
+  @include center-horizontal;
+  @include size(19cm, auto);
+  page-break-inside: avoid;
+}
+
+.payment-conditions__title {
+  font-weight: 500; /* font-medium */
+  font-size: 16px;
+  margin-bottom: 12px; /* mb-3 */
+}
+
+.payment-conditions__grid {
+  display: grid; /* grid */
+  grid-template-columns: repeat(12, 1fr); /* grid-cols-12 */
+  font-size: 14px; /* text-sm */
+  row-gap: 8px; /* gap-y-2 */
+}
+
+.payment-conditions__cell {
+  padding: 0; /* pas de padding explicite côté Tailwind pour ce bloc */
+}
+
+.payment-conditions__cell--span-6 {
+  grid-column: span 6;
+}
+.payment-conditions__cell--span-3 {
+  grid-column: span 3;
+}
+.payment-conditions__cell--center {
+  text-align: center;
+}
+.payment-conditions__cell--right {
+  text-align: right;
 }
