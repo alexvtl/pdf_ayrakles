@@ -323,12 +323,8 @@ app.post("/generate-pdf/bon_commande", async (req, res) => {
     .replace("{{image_logo}}", imageslogo_bon)
     .replace("{{entreprise_nom}}", data.entreprise_nom || "CONSTRUCTION SARL")
     .replace(
-      "{{entreprise_adresse_1}}",
-      data.entreprise_adresse_1 || "123 Avenue du Bâtiment"
-    )
-    .replace(
-      "{{entreprise_adresse_2}}",
-      data.entreprise_adresse_2 || "75001 Paris, France"
+      "{{entreprise_adresse}}",
+      data.entreprise_adresse || "123 Avenue du Bâtiment"
     )
     .replace(
       "{{entreprise_telephone}}",
@@ -358,22 +354,6 @@ app.post("/generate-pdf/bon_commande", async (req, res) => {
       data.fournisseur_nom || "Matériaux Pro SARL"
     )
     .replace(
-      "{{fournisseur_adresse_1}}",
-      data.fournisseur_adresse_1 || "45 Rue des Entrepreneurs"
-    )
-    .replace(
-      "{{fournisseur_adresse_2}}",
-      data.fournisseur_adresse_2 || "75012 Paris, France"
-    )
-    .replace(
-      "{{fournisseur_tel}}",
-      data.fournisseur_tel || "Tél: 01 98 76 54 32"
-    )
-    .replace(
-      "{{fournisseur_siret}}",
-      data.fournisseur_siret || "987 654 321 00021"
-    )
-    .replace(
       "{{livraison_nom}}",
       data.livraison_nom || "Chantier Résidence Les Oliviers"
     )
@@ -390,31 +370,7 @@ app.post("/generate-pdf/bon_commande", async (req, res) => {
       data.livraison_contact || "Contact: Jean Dupont"
     )
     .replace("{{livraison_tel}}", data.livraison_tel || "Tél: 06 12 34 56 78")
-    .replace("{{table_bon_commande}}", table_bon)
-    .replace("{{subtotal_ht}}", formatCurrencyEUR(subtotal))
-    .replace("{{tva_rate}}", `${Math.round((vatRate || 0) * 100)}%`)
-    .replace("{{tva_amount}}", formatCurrencyEUR(vatAmount))
-    .replace("{{total_ttc}}", formatCurrencyEUR(total))
-    .replace(
-      "{{cond_livraison}}",
-      data.cond_livraison ||
-        "Délai de livraison: 5 jours ouvrés à compter de la date de commande"
-    )
-    .replace(
-      "{{cond_paiement}}",
-      data.cond_paiement ||
-        "Modalité de paiement: 30% à la commande, solde à la livraison"
-    )
-    .replace(
-      "{{cond_validite}}",
-      data.cond_validite ||
-        "Validité de l'offre: 15 jours à compter de la date d'émission"
-    )
-    .replace(
-      "{{cond_cgv}}",
-      data.cond_cgv ||
-        "Toute commande implique l'acceptation de nos conditions générales de vente"
-    );
+    .replace("{{table_bon_commande}}", table_bon);
 
   try {
     const browser = await puppeteer.launch();
