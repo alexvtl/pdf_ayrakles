@@ -1,0 +1,165 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #0f172a; /* slate-800 */
+}
+
+#root {
+  padding: 2cm 1cm 1cm 1cm; /* approx p-8 */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#entreprise__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px; /* text-2xl */
+  color: #1f2937; /* slate-800-ish */
+}
+
+#entreprise__title img {
+  height: 30px;
+  width: auto;
+  object-fit: cover;
+}
+
+#docmeta__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  background: #f1f5f9; /* slate-100 */
+  padding: 6px 12px;
+  display: inline-block;
+}
+
+#docmeta {
+  text-align: right;
+  font-size: 14px;
+}
+
+#parties {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bloc {
+  border: 1px solid #cbd5e1; /* slate-300 */
+  padding: 12px;
+  width: 45%;
+}
+
+.bloc__title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+#tableau {
+  margin-top: 16px;
+  flex-grow: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #cbd5e1;
+}
+
+thead th {
+  background: #f1f5f9; /* slate-100 */
+  color: #1f2937; /* slate-800 */
+  font-weight: 600;
+  text-align: left;
+  padding: 8px;
+}
+
+tbody td {
+  border-top: 1px solid #e2e8f0; /* slate-200 */
+  padding: 8px;
+}
+
+td.text-center,
+th.text-center {
+  text-align: center;
+}
+td.text-right,
+th.text-right {
+  text-align: right;
+}
+
+#totaux {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#totaux .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#totaux .v {
+  font-weight: 600;
+}
+#totaux .total .v {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#conditions {
+  margin-top: 16px;
+}
+
+#conditions ul {
+  padding-left: 18px;
+}
+
+#conditions li {
+  margin: 4px 0;
+  font-size: 12px;
+}
+
+#signatures {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sign {
+  border-top: 1px solid #cbd5e1;
+  padding-top: 8px;
+  width: 45%;
+}
+
+.sign__title {
+  font-weight: 600;
+}
+.sign__subtitle {
+  font-size: 12px;
+}
+.sign__box {
+  height: 64px;
+}

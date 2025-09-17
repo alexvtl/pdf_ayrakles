@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bon de commande</title>
+  </head>
+  <body>
+    <div id="root">
+      <header id="header">
+        <div id="entreprise">
+          <div id="entreprise__title">
+            {{image_logo}}<span id="entreprise__title-text"
+              >{{entreprise_nom}}</span
+            >
+          </div>
+          <div id="entreprise__addr1">{{entreprise_adresse}}</div>
+          <div id="entreprise__tel">{{entreprise_telephone}}</div>
+          <div id="entreprise__mail">{{entreprise_email}}</div>
+          <div id="entreprise__siret">SIRET: {{entreprise_siret}}</div>
+        </div>
+        <div id="docmeta">
+          <div id="docmeta__title">BON DE COMMANDE</div>
+          <div id="docmeta__num">N° Commande: {{numero_commande}}</div>
+          <div id="docmeta__date">Date: {{date}}</div>
+        </div>
+      </header>
+
+      <section id="parties">
+        <div class="bloc" id="bloc-fournisseur">
+          <div class="bloc__title">FOURNISSEUR</div>
+          <div>{{fournisseur_nom}}</div>
+        </div>
+        <div class="bloc" id="bloc-livraison">
+          <div class="bloc__title">LIVRAISON</div>
+          <div>{{livraison_nom}}</div>
+          <div>{{livraison_adresse_1}}</div>
+          <div>{{livraison_adresse_2}}</div>
+          <div>{{livraison_contact}}</div>
+          <div>{{livraison_tel}}</div>
+        </div>
+      </section>
+
+      <section id="tableau">
+        <div class="bloc__title">MATÉRIAUX COMMANDÉS</div>
+        {{table_bon_commande}}
+      </section>
+    </div>
+  </body>
+</html>

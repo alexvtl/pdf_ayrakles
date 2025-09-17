@@ -1,6 +1,7 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
 const { renderTableaux } = require("./tableau_devis.js");
+const { renderTableauBonCommande } = require("./tableau_bon_commande.js");
 const { tableau_total, tableau_facture } = require("./tableau_facture.js");
 const { renderTableaux_avenant } = require("./tableau_avenant.js");
 const {
@@ -23,19 +24,6 @@ app.get("/health", (req, res) => {
 // Puppeteer browser global (réutilisé) pour la route devis
 const launchArgs = ["--no-sandbox", "--disable-dev-shm-usage"];
 let browserPromise = puppeteer.launch({ headless: "new", args: launchArgs });
-
-app.get("/pdf/:uuid", (req, res) => {
-  const uuid = req.params.uuid;
-  const filePath = path.join(__dirname, "files", `${uuid}.pdf`);
-
-  if (fs.existsSync(filePath)) {
-    res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `inline; filename=${uuid}.pdf`);
-    res.sendFile(filePath);
-  } else {
-    res.status(404).send("PDF introuvable");
-  }
-});
 
 app.post("/generate-pdf/devis", async (req, res) => {
   const t0 = Date.now();
@@ -306,6 +294,143 @@ app.post("/generate-pdf/avenant", async (req, res) => {
     await browser.close();
   } catch (err) {
     console.error("Erreur PDF :", err);
+    res.status(500).send("Erreur lors de la génération du PDF");
+  }
+});
+
+app.post("/generate-pdf/bon_commande", async (req, res) => {
+  const data = req.body || {};
+  const table_bon = renderTableauBonCommande(data);
+
+  const htmlPath = path.join(
+    __dirname,
+    "./front_template_bon_commande/index.html"
+  );
+  let html = fs.readFileSync(htmlPath, "utf-8");
+  const cssPath = path.join(
+    __dirname,
+    "./front_template_bon_commande/style.css"
+  );
+  const css = fs.readFileSync(cssPath, "utf-8");
+
+  const imageslogo_bon =
+    data && data.logo && data.logo_type
+      ? `<img style="object-fit: cover;height: 30px;width:auto;" src="data:image/${data.logo_type};base64,${data.logo}" />`
+      : "";
+
+  const htmlPage = html
+    .replace("</head>", `<style>${css}</style></head>`)
+    .replace("{{image_logo}}", imageslogo_bon)
+    .replace("{{entreprise_nom}}", data.entreprise_nom || "CONSTRUCTION SARL")
+    .replace(
+      "{{entreprise_adresse_1}}",
+      data.entreprise_adresse_1 || "123 Avenue du Bâtiment"
+    )
+    .replace(
+      "{{entreprise_adresse_2}}",
+      data.entreprise_adresse_2 || "75001 Paris, France"
+    )
+    .replace(
+      "{{entreprise_telephone}}",
+      data.entreprise_telephone || "Tél: 01 23 45 67 89"
+    )
+    .replace(
+      "{{entreprise_email}}",
+      data.entreprise_email || "contact@construction-sarl.fr"
+    )
+    .replace(
+      "{{entreprise_siret}}",
+      data.entreprise_siret || "123 456 789 00012"
+    )
+    .replace("{{numero_commande}}", data.numero_commande || "BDC-2024-0127")
+    .replace(
+      "{{date}}",
+      data.date ||
+        new Intl.DateTimeFormat("fr-FR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(new Date())
+    )
+    .replace("{{reference_client}}", data.reference_client || "CLI-2024-0058")
+    .replace(
+      "{{fournisseur_nom}}",
+      data.fournisseur_nom || "Matériaux Pro SARL"
+    )
+    .replace(
+      "{{fournisseur_adresse_1}}",
+      data.fournisseur_adresse_1 || "45 Rue des Entrepreneurs"
+    )
+    .replace(
+      "{{fournisseur_adresse_2}}",
+      data.fournisseur_adresse_2 || "75012 Paris, France"
+    )
+    .replace(
+      "{{fournisseur_tel}}",
+      data.fournisseur_tel || "Tél: 01 98 76 54 32"
+    )
+    .replace(
+      "{{fournisseur_siret}}",
+      data.fournisseur_siret || "987 654 321 00021"
+    )
+    .replace(
+      "{{livraison_nom}}",
+      data.livraison_nom || "Chantier Résidence Les Oliviers"
+    )
+    .replace(
+      "{{livraison_adresse_1}}",
+      data.livraison_adresse_1 || "78 Avenue des Chênes"
+    )
+    .replace(
+      "{{livraison_adresse_2}}",
+      data.livraison_adresse_2 || "92100 Boulogne-Billancourt"
+    )
+    .replace(
+      "{{livraison_contact}}",
+      data.livraison_contact || "Contact: Jean Dupont"
+    )
+    .replace("{{livraison_tel}}", data.livraison_tel || "Tél: 06 12 34 56 78")
+    .replace("{{table_bon_commande}}", table_bon)
+    .replace("{{subtotal_ht}}", formatCurrencyEUR(subtotal))
+    .replace("{{tva_rate}}", `${Math.round((vatRate || 0) * 100)}%`)
+    .replace("{{tva_amount}}", formatCurrencyEUR(vatAmount))
+    .replace("{{total_ttc}}", formatCurrencyEUR(total))
+    .replace(
+      "{{cond_livraison}}",
+      data.cond_livraison ||
+        "Délai de livraison: 5 jours ouvrés à compter de la date de commande"
+    )
+    .replace(
+      "{{cond_paiement}}",
+      data.cond_paiement ||
+        "Modalité de paiement: 30% à la commande, solde à la livraison"
+    )
+    .replace(
+      "{{cond_validite}}",
+      data.cond_validite ||
+        "Validité de l'offre: 15 jours à compter de la date d'émission"
+    )
+    .replace(
+      "{{cond_cgv}}",
+      data.cond_cgv ||
+        "Toute commande implique l'acceptation de nos conditions générales de vente"
+    );
+
+  try {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.setContent(htmlPage, { waitUntil: "networkidle0" });
+    const pdfbuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+      margin: { top: "0.5cm", bottom: "0.5cm", left: "0.5cm", right: "0.5cm" },
+    });
+
+    res.set({ "Content-Type": "application/pdf" });
+    res.end(pdfbuffer);
+    await browser.close();
+  } catch (err) {
+    console.error("Erreur PDF bon_commande:", err);
     res.status(500).send("Erreur lors de la génération du PDF");
   }
 });
