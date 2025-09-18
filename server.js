@@ -318,6 +318,13 @@ app.post("/generate-pdf/bon_commande", async (req, res) => {
       ? `<img style="object-fit: cover;height: 30px;width:auto;" src="data:image/${data.logo_type};base64,${data.logo}" />`
       : "";
 
+  const fournisseur = data.fournisseur_nom
+    ? `<div class="bloc" id="bloc-fournisseur">
+          <div class="bloc__title">FOURNISSEUR</div>
+          <div>${data.fournisseur_nom}</div>
+        </div>`
+    : "";
+
   const htmlPage = html
     .replace("</head>", `<style>${css}</style></head>`)
     .replace("{{image_logo}}", imageslogo_bon)
@@ -370,7 +377,8 @@ app.post("/generate-pdf/bon_commande", async (req, res) => {
       data.livraison_contact || "Contact: Jean Dupont"
     )
     .replace("{{livraison_tel}}", data.livraison_tel || "Tél: 06 12 34 56 78")
-    .replace("{{table_bon_commande}}", table_bon);
+    .replace("{{table_bon_commande}}", table_bon)
+    .replace("{{fournisseur}}", fournisseur);
 
   try {
     const browser = await puppeteer.launch();
