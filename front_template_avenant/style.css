@@ -397,7 +397,7 @@ body {
 }
 
 .yellow {
-  background-color: #eccc8c !important;
+  background-color: #cd7f32 !important;
   color: #fff !important;
 }
 
@@ -637,5 +637,3 @@ body {
 .payment-conditions__cell--right {
   text-align: right;
 }
-
-/*# sourceMappingURL=style.css.map */
