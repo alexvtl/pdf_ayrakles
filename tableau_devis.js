@@ -333,16 +333,18 @@ const renderTableaux = (Data) => {
         }</div> `
             : ""
         }
-        ${
-          Data.remarque
-            ? `
-        <div class="totals-card__cell totals-card__cell--top-border">Remarque</div>
-        <div class="totals-card__cell totals-card__cell--top-border totals-card__cell--right totals-card__cell--italic-gray">${
-          Data.remarque || ""
-        }</div>
+         ${
+           Data.remarque
+             ? `
+        <div class="totals-card__cell totals-card__cell--top-border" style="grid-column: 1 / -1;">
+          <div>Remarque :</div>
+          <div class="totals-card__cell--italic-gray">${
+            Data.remarque || ""
+          }</div>
+        </div>
         `
-            : null
-        }
+             : ""
+         }
       </div>
     </div>
   </div>`;
