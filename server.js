@@ -88,8 +88,8 @@ app.post("/generate-pdf/devis", async (req, res) => {
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: `<div style="width:100%; box-sizing:border-box;font-family: 'Inter', sans-serif;display:flex;margin:0cm  0cm 0cm 0cm; padding:0 1cm; display:flex; justify-content:space-between;">
-        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;">DEVIS</span>
-        <span style=" font-size: 12px; color: #296b77;">Devis n°${data.numero_devis}</span>
+        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color:rgb(0, 0, 0);">DEVIS</span>
+        <span style=" font-size: 12px; color:rgb(0, 0, 0);">Devis n°${data.numero_devis}</span>
        </div>`,
 
       footerTemplate: `
@@ -265,8 +265,8 @@ app.post("/generate-pdf/avenant", async (req, res) => {
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate: `<div style="width:100%; box-sizing:border-box;font-family: 'Inter', sans-serif;display:flex;margin:0cm  0cm 0cm 0cm; padding:0 1cm; display:flex; justify-content:space-between;">
-        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color: #eccc8c;">DEVIS</span>
-        <span style=" font-size: 12px; color: #296b77;">AVENANT n°${data.numero_devis}</span>
+        <span style="-webkit-print-color-adjust: exact; font-size: 22px; color:rgb(0, 0, 0);">DEVIS</span>
+        <span style=" font-size: 12px; color:rgb(0, 0, 0);">AVENANT n°${data.numero_devis}</span>
        </div>`,
 
       footerTemplate: `
