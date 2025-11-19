@@ -73,7 +73,8 @@ body {
   text-align: end;
   color: black;
 }
-.section_header__right__client-adresse-1, .section_header__right__client-adresse-2 {
+.section_header__right__client-adresse-1,
+.section_header__right__client-adresse-2 {
   white-space: nowrap;
   text-align: end;
   color: #4b5563;
@@ -115,7 +116,8 @@ body {
   margin: 0px !important;
   padding: 0px !important;
 }
-.section_info-projet__text_1, .section_info-projet__text_2 {
+.section_info-projet__text_1,
+.section_info-projet__text_2 {
   font-size: 16px;
   margin: 0px !important;
   color: black;
@@ -294,7 +296,10 @@ body {
   padding: 0;
   margin: 0;
 }
-.section__prestation__price_uht, .section__prestation__quantity, .section__prestation__unit, .section__prestation__remise {
+.section__prestation__price_uht,
+.section__prestation__quantity,
+.section__prestation__unit,
+.section__prestation__remise {
   padding: 3px 4px;
   vertical-align: middle;
   max-width: 8cm;
@@ -560,13 +565,13 @@ body {
 }
 
 .totals-card__cell--blue {
-  background-color: #2563eb; /* bg-blue-600 */
+  background-color: #326c99; /* bg-blue-600 */
   color: #ffffff; /* text-white */
 }
 
 .totals-card__cell--blue-light {
   background-color: #dbeafe; /* bg-blue-100 */
-  color: #1e40af; /* text-blue-800 */
+  color: #326c99; /* text-blue-800 */
 }
 
 .totals-card__cell--right {

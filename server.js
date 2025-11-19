@@ -100,7 +100,7 @@ app.post("/generate-pdf/devis", async (req, res) => {
       siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
       email : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
     </span>
-    <span class="pageNumber" style="-webkit-print-color-adjust:exact; font-size:16px; font-weight:bold; color:#296b77;"></span>
+    <span class="pageNumber" style="-webkit-print-color-adjust:exact; font-size:16px; font-weight:bold; color:#326C99;"></span>
   </div>
 </footer>
         `,
@@ -277,7 +277,7 @@ app.post("/generate-pdf/avenant", async (req, res) => {
       siren ${data.siren} – decennale ${data.assurance_nom} n° contrat : ${data.contrat_decennale} –
       email : ${data.email_entreprise} / tel : ${data.telephone_entreprise}
     </span>
-    <span class="pageNumber" style="-webkit-print-color-adjust:exact; font-size:16px; font-weight:bold; color:#296b77;"></span>
+    <span class="pageNumber" style="-webkit-print-color-adjust:exact; font-size:16px; font-weight:bold; color:#326C99;"></span>
   </div>
 </footer>
         `,
